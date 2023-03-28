@@ -10,7 +10,7 @@ var scrollLeft = 0;
 
 type CanvasProps = React.DetailedHTMLProps<React.CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement> & {draw: (ctx: CanvasRenderingContext2D, player: Player) => void} 
  & {onClick: (canvas:HTMLCanvasElement |null, player: Player, party:Party,event: any) => void} & {updateParty: (party:Party) => void} & {drawCursor: (ctx: CanvasRenderingContext2D, time:Number) => void}
- & {updateCanvas: () => void} & {player: Player} & {party: Party};
+ & {updateCanvas: (scroll:Number) => void} & {player: Player} & {party: Party};
 
 const Canvas: React.FC<CanvasProps> = ({draw, ...props}) => { 
 
@@ -229,7 +229,6 @@ function drawDamageLine(ctx:CanvasRenderingContext2D, canvas:HTMLCanvasElement) 
         props.updateParty(party);
         }
       
-      //}
       }
 
 
@@ -355,7 +354,7 @@ function drawDamageLine(ctx:CanvasRenderingContext2D, canvas:HTMLCanvasElement) 
   function handleOnScroll(event: any) {
 
     scrollLeft = event.currentTarget.scrollLeft ;
-    props.updateCanvas();
+    props.updateCanvas(scrollLeft);
     
   }
 

@@ -94,8 +94,8 @@ class ActionLister extends React.Component{
     
   }
 
-  updateCanvas = () => {
-    this.props.updateParty(this.party);
+  updateCanvas = (scroll) => {
+    this.props.updateCanvas(scroll);
   }
 
   drawLine=(ctx, player) =>{
@@ -216,6 +216,10 @@ class SkillLister extends React.Component{
 
   updateParty = (party) => {
     this.props.updateParty(party);
+  }
+
+  updateCanvas = (scroll) => {
+    this.props.updateCanvas(scroll);
   }
 
   addSkillToLine(){
@@ -378,7 +382,7 @@ render(){
     {this.getSkillList(this.state.p.job.getSkills())}
     </div>
     
-    <ActionLister player = {this.state.p} party = {this.state.party} updateParty={this.updateParty}  scrollLeft={this.state.scrollLeft}/>
+    <ActionLister player = {this.state.p} party = {this.state.party} updateParty={this.updateParty}  scrollLeft={this.state.scrollLeft}  updateCanvas={this.updateCanvas}/>
 
     </div>
 }
@@ -398,6 +402,10 @@ party;
 
   updateParty = (party) => {
     this.props.updateParty(party);
+  }
+
+  updateCanvas = (scroll) => {
+    this.props.updateCanvas(scroll);
   }
 
   updateJob(e){
@@ -423,7 +431,7 @@ party;
       {listOptionJob}
     </select>
     </div>
-    <SkillLister player = {this.state.p} party = {this.state.party} time = {this.state.time} updateParty={this.updateParty} scrollLeft={this.state.scrollLeft}/>
+    <SkillLister player = {this.state.p} party = {this.state.party} time = {this.state.time} updateParty={this.updateParty} scrollLeft={this.state.scrollLeft} updateCanvas={this.updateCanvas}/>
     </div>
   }
 
@@ -438,20 +446,33 @@ party;
 function Interface() {
   const [party, setParty] = useState(createParty());
   const [partyRender, setPartyRender] = useState(renderPage(party));
-  var scrollLeft=0;
+  const [scrollLeft, setScrollLeft] = useState(0);
+  var index = 0;
 
   function updateParty(party) {
     party.players.forEach(player => party.updateStatPlayer(player.p));
     setParty(party);
-    setPartyRender(renderPage(party));
+    setPartyRender(renderPage(party,scrollLeft));
+    
+  }
+
+  function updateCanvas(scroll) {
+
+    if (index === 20) {
+      setPartyRender(renderPage(party,scrollLeft));
+      index =0;
+    }
+    setScrollLeft(scroll);
+    
+    index++;
     
   }
   
-    function renderPage(party) {
+    function renderPage(party, scrollLeft) {
         
         let partyRender=[];
 
-        party.players.forEach(player => partyRender.push(<JobSelecter player={player.p} key={player.p.pIndex} party={party} updateParty={updateParty} scrollLeft={scrollLeft}/>));
+        party.players.forEach(player => partyRender.push(<JobSelecter player={player.p} key={player.p.pIndex} party={party} updateParty={updateParty} updateCanvas={updateCanvas} scrollLeft={scrollLeft}/>));
         return partyRender;
       }
 
