@@ -307,7 +307,8 @@ pPos: string     */
         var listCdSkills = new Map<Number,Number>()
         player.job.getSkills().forEach(skill => {
             let head = player.record!.head;
-            let stacks = 0;
+            // eslint-disable-next-line
+            var stacks = 0;
 
             skill.getBuffs().forEach(buff => {
 

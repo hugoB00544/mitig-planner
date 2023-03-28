@@ -464,7 +464,7 @@ function Interface() {
       setPartyRender(renderPage(party,scrollLeft));
       index =0;
     }
-    //setScrollLeft(scroll);
+    setScrollLeft(scroll);
     
     index++;
     

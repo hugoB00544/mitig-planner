@@ -72,7 +72,7 @@ const Canvas: React.FC<CanvasProps> = ({draw, ...props}) => {
       
     }
 
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props])
 
 
