@@ -310,10 +310,16 @@ pPos: string     */
             let stacks = 0;
 
             skill.getBuffs().forEach(buff => {
+
+                if (!listCdSkills.has(skill.skillIndex)) {
+                    if (buff.cd !== 0) {
+                        
+                    
                 
                 
                 stacks = buff.stack;
                 let firstIt = -1;
+                let iteration = 0;
 
             if (player.record!.head) {
             
@@ -321,10 +327,12 @@ pPos: string     */
                     if (head.time <= this.timeCalcul ) {
                         
                         if (buff.buffIndex === head.getBuffIndex() ) {
+                            iteration++;
                             
-                            if (Math.floor((head.time-firstIt)/(buff.cd)) === buff.stack) {
+                            if (Math.floor((head.time-firstIt)/(buff.cd)) >= buff.stack) {
                                 
                                 firstIt = -1;
+                                iteration = 1;
                             }
 
                             if (firstIt === -1) {
@@ -344,13 +352,17 @@ pPos: string     */
 
                     
                 }
-                
+                //Math.floor((this.timeCalcul-firstIt)/(buff.cd)) < buff.stack
 
-                if (firstIt !== -1 && Math.floor((this.timeCalcul-firstIt)/(buff.cd)) < buff.stack) {
-                    listCdSkills.set(skill.skillIndex, Math.round((buff.cd -(this.timeCalcul-firstIt)%buff.cd)*100)/100);
+                if (firstIt !== -1 && (this.timeCalcul - firstIt <= buff.cd*iteration)) {
+                    
+                        listCdSkills.set(skill.skillIndex, Math.round((buff.cd -(this.timeCalcul-firstIt)%buff.cd)*100)/100);
+                    
+                    
                 }
                 
-                
+            }
+        }
             });
         });
 
@@ -366,48 +378,61 @@ pPos: string     */
             let stacks = 0;
 
             skill.getBuffs().forEach(buff => {
+                if (!listStacksSkills.has(skill.skillIndex)) {
                 
-                
-                stacks = buff.stack;
-                let firstIt = -1;
-                let iteration = 0;
-
-            if (player.record!.head) {
-            
-                while (head) {
-                    if (head.time <= this.timeCalcul ) {
+                    if (buff.cd !== 0) {
                         
-                        if (buff.buffIndex === head.getBuffIndex() ) {
-                            iteration++;
-                            if (firstIt === -1) {
-                                firstIt = head.time;
-                            
-                            }
-                            
-                        }
-
-
-                        if (Math.floor((this.timeCalcul-firstIt)/(buff.cd)) === buff.stack) {
-                            
-                            iteration =0;
-                            firstIt = -1;
-                        }
-                                    
-                }
-
+                    
                 
-                    head = head.next;
+                    stacks = buff.stack;
+                    let firstIt = -1;
+                    let iteration = 0;
+    
+                if (player.record!.head) {
+                
+                    while (head) {
+                        if (head.time <= this.timeCalcul ) {
+                            
+                            if (buff.buffIndex === head.getBuffIndex() ) {
+                                iteration++;
+                                
+                                if (Math.floor((head.time-firstIt)/(buff.cd)) >= buff.stack) {
+                                    
+                                    firstIt = -1;
+                                    iteration = 1;
+                                }
+    
+                                if (firstIt === -1) {
+                                    firstIt = head.time;
+                        
+                                }
+     
+                                
+                            }
+    
                 
                     }
-
-                    stacks = (buff.stack - iteration) + Math.floor((this.timeCalcul-firstIt)/(buff.cd));
-
+    
+                        head = head.next;
                     
+                        }
+    
+                        
+                    }
+                    //Math.floor((this.timeCalcul-firstIt)/(buff.cd)) < buff.stack
+                    stacks = buff.stack - iteration + (Math.floor((this.timeCalcul-firstIt)/buff.cd));
+                    if (stacks > buff.stack ) {
+                        stacks = buff.stack;
+                    }
+    
+                    
+                        listStacksSkills.set(skill.skillIndex, stacks);
+                        
+                    
+                }else{
+                    listStacksSkills.set(skill.skillIndex, buff.stack);
                 }
-                if (stacks > buff.stack) {
-                    stacks = buff.stack;
-                }
-                listStacksSkills.set(skill.skillIndex, stacks);
+            }
             });
         });
 

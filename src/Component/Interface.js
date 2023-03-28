@@ -219,7 +219,7 @@ class SkillLister extends React.Component{
   }
 
   updateCanvas = (scroll) => {
-    this.setState({scrollLeft:scroll});
+    //this.setState({scrollLeft:scroll});
     this.props.updateCanvas(scroll);
   }
 
@@ -460,11 +460,11 @@ function Interface() {
 
   function updateCanvas(scroll) {
 
-    if (index === 20) {
+    if (index === 10) {
       setPartyRender(renderPage(party,scrollLeft));
       index =0;
     }
-    setScrollLeft(scroll);
+    //setScrollLeft(scroll);
     
     index++;
     
