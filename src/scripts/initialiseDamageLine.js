@@ -1,0 +1,140 @@
+import { DamageNode, DamageType } from "../Controller/DamageNode.ts";
+import { DamageLine } from "../Controller/DamageLine.ts";
+
+export function initialiseDamageLine(){
+
+    let LineP8sP1Gorgon = new DamageLine("P8S P1 Gorgon first");
+    LineP8sP1Gorgon.addDamage(new DamageNode("Genesis of Flame",12,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Tetra/Octaflare",41,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Flameviper",48,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Flameviper",51,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Blood of the Gorgon",103,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Blood of the Gorgon",111,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Ektothermos",121,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Hemitheos's Flare",155,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Nest of Flamevipers",159,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Emergent Tetraflare",167,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Genesis of Flame",183,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Footprint",202,DamageType.Physic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Rearing Rampage/Uplift",208,DamageType.Physic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Rearing Rampage/Uplift",210,DamageType.Physic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Rearing Rampage/Uplift",212,DamageType.Physic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Rearing Rampage/Uplift",214,DamageType.Physic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Stomp Dead",222,DamageType.Physic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Stomp Dead",224,DamageType.Physic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Stomp Dead",226,DamageType.Physic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Stomp Dead",229,DamageType.Physic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Abyssal Fires",258,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Emergent Tetraflare/Octaflare",277,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Emergent Tetraflare/Octaflare",291,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Flameviper",298,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Flameviper",301,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Blood of the Gorgon",351,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Blood of the Gorgon",357,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Breath of the Gorgon",367,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Flameviper",380,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Flameviper",384,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Footprint",403,DamageType.Physic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Emergent Tetraflare/Diflare",432,DamageType.Magic));
+    LineP8sP1Gorgon.addDamage(new DamageNode("Genesis of Flame",459,DamageType.Magic));
+
+
+    let LineP8sP1Dog = new DamageLine("P8S P1 Dog first");
+    LineP8sP1Dog.addDamage(new DamageNode("Genesis of Flame",2,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Tetra/Octaflare",41,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Flameviper",48,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Flameviper",51,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Footprint",70,DamageType.Physic));
+    LineP8sP1Dog.addDamage(new DamageNode("Rearing Rampage/Uplift",77,DamageType.Physic));
+    LineP8sP1Dog.addDamage(new DamageNode("Rearing Rampage/Uplift",79,DamageType.Physic));
+    LineP8sP1Dog.addDamage(new DamageNode("Rearing Rampage/Uplift",81,DamageType.Physic));
+    LineP8sP1Dog.addDamage(new DamageNode("Rearing Rampage/Uplift",83,DamageType.Physic));
+    LineP8sP1Dog.addDamage(new DamageNode("Stomp Dead",89,DamageType.Physic));
+    LineP8sP1Dog.addDamage(new DamageNode("Stomp Dead",92,DamageType.Physic));
+    LineP8sP1Dog.addDamage(new DamageNode("Stomp Dead",94,DamageType.Physic));
+    LineP8sP1Dog.addDamage(new DamageNode("Stomp Dead",96,DamageType.Physic));
+    LineP8sP1Dog.addDamage(new DamageNode("Hemitheos's Flare",129,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Nest of Flamevipers",133,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Emergent Tetraflare",141,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Genesis of Flame",157,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Blood of the Gorgon",210,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Blood of the Gorgon",218,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Ektothermos",227,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Abyssal Fires",258,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Emergent Tetraflare/Octaflare",277,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Emergent Tetraflare/Octaflare",291,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Flameviper",298,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Flameviper",301,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Footprint",320,DamageType.Physic));
+    LineP8sP1Dog.addDamage(new DamageNode("Emergent Tetraflare/Diflare",350,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Flameviper",377,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Flameviper",380,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Blood of the Gorgon",430,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Blood of the Gorgon",436,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Breath of the Gorgon",446,DamageType.Magic));
+    LineP8sP1Dog.addDamage(new DamageNode("Genesis of Flame",459,DamageType.Magic));
+
+
+
+    let LineP8sP2 = new DamageLine("P8S P2");
+    LineP8sP2.addDamage(new DamageNode("Aioniopyr",15,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Tyrant's Unholy Darkness",27,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Forcible Fire III",58,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Forcible Fire II",64,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Forcible Difreeze",76,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Forcible Trifire",82,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Aioniopyr",88,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Tyrant's Unholy Darkness",103,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("High Concept",114,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Conceptual Shift",126,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Splicer",126.5,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Arcane Channel",138,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Conceptual Shift",144,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Arcane Channel",156,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Aioniopyr",171,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Tyrant's Fire III",186,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Tyrant's Fire III",189,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Tyrant's Fire III",192,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Tyrant's Fire III",195,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Burst",197,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Burst",200,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Burst",203,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Burst",206,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Aioniopyr",213,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Tyrant's Unholy Darkness",227,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Forcible Fire II/III",263,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Forcible Fire II/III",269,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Forcible Trifire",282,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Forcible Difreeze",288,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Aioniopyr",302,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Tyrant's Unholy Darkness",317,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("High Concept",332,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Conceptual Shift",340,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Splicer",340.5,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Arcane Channel",352,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Conceptual Shift",358,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("End of Days",370,DamageType.Death));
+    LineP8sP2.addDamage(new DamageNode("Arcane Channel",370.5,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Ego Death",393,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Aionagonia",425,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Dominion",435,DamageType.Physic));
+    LineP8sP2.addDamage(new DamageNode("Orogenic Deformation",436,DamageType.Physic));
+    LineP8sP2.addDamage(new DamageNode("Orogenic Shift",443,DamageType.Physic));
+    LineP8sP2.addDamage(new DamageNode("Orogenic Shift",449,DamageType.Physic));
+    LineP8sP2.addDamage(new DamageNode("Aionagonia",454,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Dominion",464,DamageType.Physic));
+    LineP8sP2.addDamage(new DamageNode("Orogenic Deformation",465,DamageType.Physic));
+    LineP8sP2.addDamage(new DamageNode("Orogenic Shift",472,DamageType.Physic));
+    LineP8sP2.addDamage(new DamageNode("Orogenic Shift",478,DamageType.Physic));
+    LineP8sP2.addDamage(new DamageNode("Aionagonia",483,DamageType.Magic));
+    LineP8sP2.addDamage(new DamageNode("Ego Death",506,DamageType.Death));
+
+
+    let DamageLineList = new Map();
+    DamageLineList.set(LineP8sP1Gorgon.damageLineIndex, LineP8sP1Gorgon);
+    DamageLineList.set(LineP8sP1Dog.damageLineIndex, LineP8sP1Dog);
+    DamageLineList.set(LineP8sP2.damageLineIndex, LineP8sP2);
+
+
+    return DamageLineList;
+}
