@@ -83,6 +83,7 @@ pPos: string     */
         return time;
     }
 
+
     public setTimeCalcul(time:number) {
         this.timeCalcul = Math.round(time*100)/100
     }
@@ -304,38 +305,53 @@ pPos: string     */
     public getCooldownSkills(player:Player){
 
         var listCdSkills = new Map<Number,Number>()
-        
-        var lastTime:Number;
         player.job.getSkills().forEach(skill => {
-            
-            
-                let head = player.record!.head;
-            
-             lastTime = 0;
+            let head = player.record!.head;
+            let stacks = 0;
+
+            skill.getBuffs().forEach(buff => {
+                
+                
+                stacks = buff.stack;
+                let firstIt = -1;
+
             if (player.record!.head) {
             
                 while (head) {
-                    if (head.time <= this.timeCalcul) {
-                        skill.getBuffs().forEach(buff => {
-                            if (buff.buffIndex === head!.getBuffIndex()) {
-                                let calc = Math.round((buff.cd - (this.timeCalcul - head!.time))*10)/10
-                                if (calc > lastTime) {
-                                    lastTime = calc;
-                                }
-                            }
+                    if (head.time <= this.timeCalcul ) {
+                        
+                        if (buff.buffIndex === head.getBuffIndex() ) {
                             
-                        });
-                    }
+                            if (Math.floor((head.time-firstIt)/(buff.cd)) === buff.stack) {
+                                
+                                firstIt = -1;
+                            }
+
+                            if (firstIt === -1) {
+                                firstIt = head.time;
                     
-                    listCdSkills.set(skill.skillIndex, lastTime);
+                            }
+ 
+                            
+                        }
 
-
+            
+                }
 
                     head = head.next;
                 
                     }
+
+                    
                 }
-            
+                
+
+                if (firstIt !== -1 && Math.floor((this.timeCalcul-firstIt)/(buff.cd)) < buff.stack) {
+                    listCdSkills.set(skill.skillIndex, Math.round((buff.cd -(this.timeCalcul-firstIt)%buff.cd)*100)/100);
+                }
+                
+                
+            });
         });
 
         return listCdSkills;
@@ -350,30 +366,47 @@ pPos: string     */
             let stacks = 0;
 
             skill.getBuffs().forEach(buff => {
+                
+                
                 stacks = buff.stack;
-                let intervalStack = stacks*buff.cd;
+                let firstIt = -1;
+                let iteration = 0;
 
             if (player.record!.head) {
             
                 while (head) {
-                    if (head.time <= this.timeCalcul && head.time > this.timeCalcul-intervalStack) {
+                    if (head.time <= this.timeCalcul ) {
                         
-                            if (buff.buffIndex === head.getBuffIndex()) {
-                                stacks--;
+                        if (buff.buffIndex === head.getBuffIndex() ) {
+                            iteration++;
+                            if (firstIt === -1) {
+                                firstIt = head.time;
+                            
                             }
                             
-                        
-                    }
-                    
-                    
+                        }
 
 
+                        if (Math.floor((this.timeCalcul-firstIt)/(buff.cd)) === buff.stack) {
+                            
+                            iteration =0;
+                            firstIt = -1;
+                        }
+                                    
+                }
 
+                
                     head = head.next;
                 
                     }
-                }
 
+                    stacks = (buff.stack - iteration) + Math.floor((this.timeCalcul-firstIt)/(buff.cd));
+
+                    
+                }
+                if (stacks > buff.stack) {
+                    stacks = buff.stack;
+                }
                 listStacksSkills.set(skill.skillIndex, stacks);
             });
         });

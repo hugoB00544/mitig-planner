@@ -219,6 +219,7 @@ class SkillLister extends React.Component{
   }
 
   updateCanvas = (scroll) => {
+    this.setState({scrollLeft:scroll});
     this.props.updateCanvas(scroll);
   }
 
@@ -254,7 +255,8 @@ class SkillLister extends React.Component{
           party.updateStatPlayer(this.state.p);
           
           this.setState({ p: player,party:party, time:this.state.time+0.7 });
-          this.state.party.setTimeCalcul(this.state.party.getGlobalLastActionTime());
+          //this.state.party.setTimeCalcul(this.state.party.getGlobalLastActionTime());
+          this.state.party.setTimeCalcul(this.state.p.record.getLastTime());
           this.updateParty(this.state.party);
           
         
