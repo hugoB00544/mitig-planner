@@ -232,7 +232,11 @@ export function initialise() {
 
     //Setup NIN
     let NIN = new Job("NIN", "https://img.finalfantasyxiv.com/lds/promo/h/N/EXvdQYvr1Rn4En8AKssbVwwcac.png",75435,126,1504,3076,2.10);
+    const BShade_Shift = new Buff(0,20,0,0,0,20,120,1,false,false,"Shade Shift","https://assets.rpglogs.com/img/ff/abilities/010000-010605.png",false);
+    let Shade_Shift = new Skill("Shade Shift","https://img.finalfantasyxiv.com/lds/d/533a4a3e924aaf268ee89a9c58845941bb73bad1.png");
+    Shade_Shift.addBuff(BShade_Shift);
     NIN.addSkill(Feint);
+    NIN.addSkill(Shade_Shift);
     
     //Setup DRG
     let DRG = new Job("DRG", "https://img.finalfantasyxiv.com/lds/promo/h/1/zWRkXGJIJhN7WHGGv1gVscRxmA.png",76179,126,1545,3096,2.50);
