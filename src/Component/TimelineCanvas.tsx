@@ -84,7 +84,6 @@ const Canvas: React.FC<CanvasProps> = ({draw, ...props}) => {
 function drawTimer(ctx:CanvasRenderingContext2D, canvas:HTMLCanvasElement) {
   var time:number = 0;
   ctx.fillStyle = "#000000";
-  console.log(time*30, width);
   
   while (time*30 < width) {
     
