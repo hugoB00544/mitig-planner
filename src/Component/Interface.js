@@ -8,6 +8,7 @@ import { ActionNode } from '../Controller/ActionNode.ts';
 import { Party } from "../Controller/Party.ts";
 import Modal from "react-modal";
 import { initialiseDamageLine } from "../scripts/initialiseDamageLine.js";
+import { exportParty } from "../scripts/exportJson.js";
 
 
 const jobList = initialise();
@@ -35,21 +36,30 @@ const customStyles = {
     transform: 'translate(-40%, -10%)',
   },
 };
+const job = jobList.values().next().value;
+  let playerList = new Map();
+  const player1 = new Player(job,"player1");
+  const player2 = new Player(job,"player2");
+  const player3 = new Player(job,"player3");
+  const player4 = new Player(job,"player4");
+  const player5 = new Player(job,"player5");
+  const player6 = new Player(job,"player6");
+  const player7 = new Player(job,"player7");
+  const player8 = new Player(job,"player8");
+
+  playerList.set(player1.pIndex, player1);
+  playerList.set(player2.pIndex, player2);
+  playerList.set(player3.pIndex, player3);
+  playerList.set(player4.pIndex, player4);
+  playerList.set(player5.pIndex, player5);
+  playerList.set(player6.pIndex, player6);
+  playerList.set(player7.pIndex, player7);
+  playerList.set(player8.pIndex, player8);
 
 
 function createParty() {
   
-  const job = jobList.values().next().value;
-  const player1 = new Player(job, 70000);
-  const player2 = new Player(job, 70000);
-  const player3 = new Player(job, 70000);
-  const player4 = new Player(job, 70000);
-  const player5 = new Player(job, 70000);
-  const player6 = new Player(job, 70000);
-  const player7 = new Player(job, 70000);
-  const player8 = new Player(job, 70000);
-
-  const party = new Party(player1,player2,player3,player4,player5,player6,player7,player8, damageLineList.get(0));
+  const party = new Party(playerList, damageLineList.get(0));
 
 return party;
 }
@@ -322,7 +332,13 @@ class SkillLister extends React.Component{
 
 updateTimecode(e) {
   let split = e.target.value.split(':');
-  this.setState({timecode: (Number(split[0])*60) +Number(split[1]), inChaine:false})
+  let time = (Number(split[0])*60) +Number(split[1]);
+  if (time >1082) {
+    alert("Timecode should not be higher then 18:08. (this limit will be removed later) ")
+    return;
+  }else {
+    this.setState({timecode: time, inChaine:false})
+  }
   
 }
 
@@ -360,7 +376,7 @@ render(){
         <h2 >Add new skill : {this.skill?this.skill.getName():"undefined"}</h2>
         <label>
         Timecode :
-          <input type="time" name="name" onChange={this.updateTimecode.bind(this)}/>
+          <input type="time" name="name" onChange={this.updateTimecode.bind(this)} min={"00:00"} max={"18:08"}/>
           
         </label><br/><br/>
         <label>
@@ -446,7 +462,8 @@ party;
 
 
 function Interface() {
-  const [party, setParty] = useState(createParty());
+  let partyInit = createParty();
+  const [party, setParty] = useState(partyInit);
   const [partyRender, setPartyRender] = useState(renderPage(party));
   const [scrollLeft, setScrollLeft] = useState(0);
   var index = 0;
@@ -487,6 +504,124 @@ function Interface() {
     
     setPartyRender(renderPage(party));
   }
+
+
+  
+  function exportLines(e){
+    
+    let json = exportParty(party);
+
+    const blob = new Blob([json]);
+    const fileDownloadUrl = URL.createObjectURL(blob);
+
+    const tag = document.createElement('a');
+    tag.href = fileDownloadUrl;
+    tag.setAttribute('download',"PartyMitig.json");
+    document.body.appendChild(tag);
+    tag.click();
+    tag.remove();
+    URL.revokeObjectURL(fileDownloadUrl);
+
+  }
+
+
+  function tryParseJSONObject (jsonString){
+    try {
+        var o = JSON.parse(jsonString);
+
+        if (o && typeof o === "object") {
+            return o;
+        }
+    }
+    catch (e) { }
+
+    return false;
+};
+
+  function importLines(e){
+    
+    
+    const tag = document.createElement('input');
+    tag.type = "file";
+    tag.setAttribute('multiple',false);
+    tag.setAttribute('accept',".json");
+    tag.addEventListener('change',function (event) {
+      const fileObj = event.target.files[0];
+      const reader = new FileReader();
+
+      let fileloaded = e => {
+        let json = tryParseJSONObject(e.target.result);
+
+
+        if(!json){
+          alert('Invalid File.');
+          return;
+        }
+        
+        let playerList = new Map();
+        let buffList = new Map();
+        let p;
+
+
+        if (!json.players) {
+          alert("Invalid File.");
+          return;
+        }
+        json.players.forEach(pInfo => {
+          jobList.forEach(job => {
+            if (job.name === pInfo.player.job) {
+              p = new Player(job,pInfo.player.name, pInfo.player.hp, pInfo.player.mp, pInfo.player.wd,pInfo.player.det,pInfo.player.mainstat)
+              playerList.set(p.name,p);
+              
+            }
+          });
+
+
+          
+          
+        });
+
+        if (playerList.size === 0) {
+          alert("Invalid File.");
+          return;
+        }
+        let partyjson = new Party(playerList,damageLineList.get(0));
+
+        json.players.forEach(pInfo => {
+        
+
+          let p = playerList.get(pInfo.player.name);
+
+
+          buffList.clear();
+          p.job.getSkills().forEach(skill => {
+            skill.getBuffs().forEach((buff, key) => {
+              buffList.set(buff.name, buff);
+            });
+            
+          });
+
+
+          pInfo.player.record.forEach(action => {
+            let target = playerList.get(action.target)!==null?playerList.get(action.target):undefined;
+            let buff = buffList.get(action.buff);
+            p.record.addAction(new ActionNode(buff,action.time, target));
+          });
+        
+      });
+        updateParty(partyjson);
+       
+      }
+
+      fileloaded = fileloaded.bind(this);
+      reader.onload = fileloaded;
+      reader.readAsText(fileObj);
+      
+  })
+    document.body.appendChild(tag);
+    tag.click();
+    tag.remove();
+  }
     
     return (<div> <h1 style={{margin:"20px"}}>Party Mitigation Planner</h1>
       <div style={{margin:"20px"}}>
@@ -494,8 +629,14 @@ function Interface() {
         <select id="damageLine" className="dLine-selection" autoComplete="off" onChange={updateDamageLine.bind(this)} style={{margin:"20px"}}>
       {listOptionDLine}
     </select>
+    
     </label>
+    <div style={{textAlign:'right', width: window.innerWidth-100, margin:"auto"}}>
+    <button onClick={exportLines} style={{margin:'10px'}}>Export Party Timelines</button>
+    <button onClick={importLines} style={{margin:'10px'}}>Import Party Timelines</button>
     </div>
+    </div>
+    
     <br/>
       <div>{partyRender}</div>
     </div>

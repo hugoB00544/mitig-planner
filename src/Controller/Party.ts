@@ -11,18 +11,12 @@ export class Party {
     /**
      *
      */
-    constructor(p1:Player,p2:Player,p3:Player,p4:Player,p5:Player,p6:Player,p7:Player,p8:Player, damageLine: DamageLine) {
+    constructor(players:Map<string,Player>, damageLine: DamageLine) {
         this.partyIndex = Party._gPartyIndex;
-        this.players = new Map<number,{ p: Player; cumulatedShield: number; cumulatedPhyMitig: number; cumulatedMagMitig: number; parryRate: number; }>([
-            [p1.pIndex, {p:p1, cumulatedShield: 0, cumulatedPhyMitig: 0, cumulatedMagMitig: 0, parryRate: 0}],
-            [p2.pIndex, {p:p2, cumulatedShield: 0, cumulatedPhyMitig: 0, cumulatedMagMitig: 0, parryRate: 0}],
-            [p3.pIndex, {p:p3, cumulatedShield: 0, cumulatedPhyMitig: 0, cumulatedMagMitig: 0, parryRate: 0}],
-            [p4.pIndex, {p:p4, cumulatedShield: 0, cumulatedPhyMitig: 0, cumulatedMagMitig: 0, parryRate: 0}],
-            [p5.pIndex, {p:p5, cumulatedShield: 0, cumulatedPhyMitig: 0, cumulatedMagMitig: 0, parryRate: 0}],
-            [p6.pIndex, {p:p6, cumulatedShield: 0, cumulatedPhyMitig: 0, cumulatedMagMitig: 0, parryRate: 0}],
-            [p7.pIndex, {p:p7, cumulatedShield: 0, cumulatedPhyMitig: 0, cumulatedMagMitig: 0, parryRate: 0}],
-            [p8.pIndex, {p:p8, cumulatedShield: 0, cumulatedPhyMitig: 0, cumulatedMagMitig: 0, parryRate: 0}]
-        ])
+        this.players = new Map<number,{ p: Player; cumulatedShield: number; cumulatedPhyMitig: number; cumulatedMagMitig: number; parryRate: number; }>()
+        players.forEach((p: Player, key: string) => {
+            this.players.set(p.pIndex,{ p: p, cumulatedShield:0 , cumulatedPhyMitig:0 , cumulatedMagMitig:0 , parryRate: 0 })
+        });
         Party._gPartyIndex++;
         this.damageLine = damageLine;
         this.timeCalcul = 0;

@@ -53,9 +53,7 @@ const Canvas: React.FC<CanvasProps> = ({draw, ...props}) => {
     
     
     
-    
     clearLine(ctx, canvas);
-
     if (isSelected && party.timeCalcul !== party.getGlobalLastActionTime()) {
       
     props.drawCursor(ctx, party.timeCalcul);
@@ -63,7 +61,6 @@ const Canvas: React.FC<CanvasProps> = ({draw, ...props}) => {
 
     drawDamageLine(ctx, canvas);
     draw(ctx,props.player);
-
     
 
 
@@ -82,25 +79,22 @@ const Canvas: React.FC<CanvasProps> = ({draw, ...props}) => {
     ctx.fillStyle = "#d3d3d3";
     ctx.fillRect(0,0,canvas.width, canvas.height);
     drawTimer(ctx,canvas);
- 
 }
 
 function drawTimer(ctx:CanvasRenderingContext2D, canvas:HTMLCanvasElement) {
   var time:number = 0;
-  var signe:string;
   ctx.fillStyle = "#000000";
+  console.log(time*30, width);
   
   while (time*30 < width) {
-    signe = "";
-    if (time < 0) {
-      signe = "-";
-    }
+    
+    
     if (time%60 === 0) {
       ctx.font = "14px serif";
-      ctx.fillText("|"+signe+time/60+":00",(time)*30, 70);
+      ctx.fillText("|"+time/60+":00",(time)*30, 70);
     }else if (time%5 === 0) {
       ctx.font = "12px serif";
-      ctx.fillText("|"+signe+(time-time%60)/60+":"+Math.round(time%60 *100)/100,(time)*30, 70);
+      ctx.fillText("|"+(time-time%60)/60+":"+Math.round(time%60 *100)/100,(time)*30, 70);
     }else{
       ctx.font = "8px serif";
       ctx.fillText("|",(time)*30, 70);
@@ -109,7 +103,6 @@ function drawTimer(ctx:CanvasRenderingContext2D, canvas:HTMLCanvasElement) {
     time++;
     
   }
-  
 }
 
 

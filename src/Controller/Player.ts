@@ -11,18 +11,48 @@ export class Player {
     det: number;
     mainstat: number;
 
+    name: string;
+
     record?: Line = undefined;
     /**
      *
      */
-    constructor(job: Job) {
+    constructor(job: Job,name:string, hp:number , mp:number , wd:number , det:number , mainstat:number) {
         this.pIndex = Player._gPIndex;
-        this.hp = job.hp;
-        this.mp = 10000;
+        this.name = name;
+        if (!hp) {
+            this.hp = job.hp;
+        }else{
+            this.hp = hp;
+        }
+
+        if (!mp) {
+            this.mp = 10000;
+        }else{
+            this.mp = mp;
+        }
+
+        if (!wd) {
+            this.wd = job.wd;
+        }else{
+            this.wd = wd;
+        }
+
+        if (!det) {
+            this.det = job.det;
+        }else{
+            this.det = det;
+        }
+
+        if (!mainstat) {
+            this.mainstat = job.mainstat;
+        }else{
+            this.mainstat = mainstat;
+        }
+        
+        
         this.job = job;
-        this.wd = job.wd;
-        this.det = job.det;
-        this.mainstat = job.mainstat;
+        
         this.record = new Line();
         Player._gPIndex++;
     }

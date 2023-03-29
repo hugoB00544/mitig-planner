@@ -5,7 +5,7 @@ export class Skill {
     readonly skillIndex: number;
     readonly name: string;
     readonly icon: string;
-    #buffs: Set<Buff>;
+    #buffs: Map<number,Buff>;
 
     /**
      *
@@ -15,7 +15,7 @@ export class Skill {
         this.name = name;
         this.icon = icon;
 
-        this.#buffs = new Set<Buff>();
+        this.#buffs = new Map<number,Buff>();
         Skill._gSkillIndex++;
     }
 
@@ -25,7 +25,7 @@ export class Skill {
 
    
     public addBuff(buff: Buff) {
-        this.#buffs.add(buff);
+        this.#buffs.set(buff.buffIndex,buff);
     }
     public getBuffs() {
         return this.#buffs;
