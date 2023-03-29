@@ -8,7 +8,7 @@ var isSelected = false;
 var width = (window.innerWidth-100)*0.65;
 var scrollLeft = 0;
 
-type CanvasProps = React.DetailedHTMLProps<React.CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement> & {draw: (ctx: CanvasRenderingContext2D, player: Player) => void} 
+type CanvasProps = React.DetailedHTMLProps<React.CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement> & {draw: (ctx: CanvasRenderingContext2D, player: Player, scrollLeft:Number) => void} 
  & {onClick: (canvas:HTMLCanvasElement |null, player: Player, party:Party,event: any) => void} & {updateParty: (party:Party) => void} & {drawCursor: (ctx: CanvasRenderingContext2D, time:Number) => void}
  & {updateCanvas: (scroll:Number) => void} & {player: Player} & {party: Party};
 
@@ -31,7 +31,7 @@ const Canvas: React.FC<CanvasProps> = ({draw, ...props}) => {
       return;
     }
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false });
 
     if (!ctx) {
       return;
@@ -60,7 +60,7 @@ const Canvas: React.FC<CanvasProps> = ({draw, ...props}) => {
     }
 
     drawDamageLine(ctx, canvas);
-    draw(ctx,props.player);
+    draw(ctx,props.player,scrollLeft);
     
 
 
@@ -214,9 +214,9 @@ function drawDamageLine(ctx:CanvasRenderingContext2D, canvas:HTMLCanvasElement) 
           if (canvasRef.current) {
             
             
-            clearLine(canvasRef.current.getContext('2d')!,canvasRef.current);
+            clearLine(canvasRef.current.getContext('2d', { alpha: false })!,canvasRef.current);
 
-            draw(canvasRef.current.getContext('2d')!,player);
+            draw(canvasRef.current.getContext('2d', { alpha: false })!,player,scrollLeft);
           }
           
         refreshFrame = 0;
@@ -229,7 +229,7 @@ function drawDamageLine(ctx:CanvasRenderingContext2D, canvas:HTMLCanvasElement) 
 
 
     }else if (!isClickDown) {
-      var ctx = canvasRef.current!.getContext('2d');
+      var ctx = canvasRef.current!.getContext('2d', { alpha: false });
       if (ctx) {
        
         

@@ -108,21 +108,24 @@ class ActionLister extends React.Component{
     this.props.updateCanvas(scroll);
   }
 
-  drawLine=(ctx, player) =>{
+  drawLine=(ctx, player, scrollLeft) =>{
     var head = player.record.head;
     
     while (head) {
+      if (Math.round((scrollLeft-100)/30)<= head.time && Math.round((scrollLeft+((window.innerWidth-100)*0.65))/30) >= head.time) {
+        
+      
           
             let img = new Image();
             img.src = head.getIcon();
-            img.pos = {x:(head.time)*30, y: 5}
+            img.pos = {x:Math.floor((head.time)*30), y: 5}
             img.onload = function(){
               
               ctx.drawImage(img,this.pos.x,this.pos.y,28,28);
             };
             
             
-            
+          }  
             
       head = head.next;
     }
@@ -142,7 +145,7 @@ deleteAction = (canvas,player,party, event) => {
   const x = event.clientX - rect.left
   const y = event.clientY - rect.top
   
-  let ctx = canvas.getContext('2d');
+  let ctx = canvas.getContext('2d', { alpha: false });
 
   let line = player.record;
   let head = line.head;
