@@ -5,7 +5,7 @@ import { Player } from "./Player";
 export class Party {
     static _gPartyIndex: number = 0;
     readonly partyIndex: number;
-    readonly players: Map<number,{ p: Player; cumulatedShield: number; cumulatedPhyMitig: number; cumulatedMagMitig: number; parryRate: number; }>;
+     players: Map<number,{ p: Player; cumulatedShield: number; cumulatedPhyMitig: number; cumulatedMagMitig: number; parryRate: number; }>;
      timeCalcul: number;
      damageLine:DamageLine;
     /**
@@ -35,6 +35,14 @@ export class Party {
                 let playerInfo = {p:player, cumulatedShield: 0, cumulatedPhyMitig: 0, cumulatedMagMitig: 0, parryRate: 0 };
                 this.players.set(key,playerInfo);
             }
+        });
+        
+    }
+
+    public setPlayers(players:Map<string,Player>) {
+        this.players = new Map<number,{ p: Player; cumulatedShield: number; cumulatedPhyMitig: number; cumulatedMagMitig: number; parryRate: number; }>()
+        players.forEach((p: Player, key: string) => {
+            this.players.set(p.pIndex,{ p: p, cumulatedShield:0 , cumulatedPhyMitig:0 , cumulatedMagMitig:0 , parryRate: 0 })
         });
         
     }

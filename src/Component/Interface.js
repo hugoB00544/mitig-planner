@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {useState} from "react";
 import Canvas from "./TimelineCanvas.tsx";
 import '../Style/App.css';
@@ -229,7 +229,6 @@ class SkillLister extends React.Component{
   }
 
   updateCanvas = (scroll) => {
-    //this.setState({scrollLeft:scroll});
     this.props.updateCanvas(scroll);
   }
 
@@ -468,15 +467,24 @@ function Interface() {
   const [scrollLeft, setScrollLeft] = useState(0);
   var index = 0;
 
-  function updateParty(party) {
-    party.players.forEach(player => party.updateStatPlayer(player.p));
-    setParty(party);
-    setPartyRender(renderPage(party,scrollLeft));
+
+  useEffect(() => {
+    updateParty(party);
+    //updateCanvas(scrollLeft);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [party]);
+
+
+
+
+  function updateParty(p) {
+    p.players.forEach(player => p.updateStatPlayer(player.p));
+    //setParty(p);
+    setPartyRender(renderPage(p,scrollLeft));
     
   }
 
   function updateCanvas(scroll) {
-
     if (index === 10) {
       setPartyRender(renderPage(party,scrollLeft));
       index =0;
@@ -502,7 +510,7 @@ function Interface() {
     party.setDamageLine(damageLine);
     setParty(party);
     
-    setPartyRender(renderPage(party));
+    //setPartyRender(renderPage(party));
   }
 
 
@@ -609,7 +617,12 @@ function Interface() {
           });
         
       });
-        updateParty(partyjson);
+      
+      partyInit = partyjson;
+      setParty(partyjson);
+        //updateParty(partyjson);
+        //setScrollLeft(0);
+        //updateCanvas(scrollLeft);
        
       }
 

@@ -212,6 +212,8 @@ function drawDamageLine(ctx:CanvasRenderingContext2D, canvas:HTMLCanvasElement) 
 
         if (refreshFrame === 20) {
           if (canvasRef.current) {
+            
+            
             clearLine(canvasRef.current.getContext('2d')!,canvasRef.current);
 
             draw(canvasRef.current.getContext('2d')!,player);
@@ -344,7 +346,6 @@ function drawDamageLine(ctx:CanvasRenderingContext2D, canvas:HTMLCanvasElement) 
   }
 
   function handleOnScroll(event: any) {
-
     scrollLeft = event.currentTarget.scrollLeft ;
     props.updateCanvas(scrollLeft);
     
