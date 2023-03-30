@@ -390,6 +390,7 @@ pPos: string     */
                     stacks = buff.stack;
                     let firstIt = -1;
                     let iteration = 0;
+                    let buffActionTimes = [];
     
                 if (player.record!.head) {
                 
@@ -397,18 +398,8 @@ pPos: string     */
                         if (head.time <= this.timeCalcul ) {
                             
                             if (buff.buffIndex === head.getBuffIndex() ) {
-                                iteration++;
+                                buffActionTimes.push(head.time);
                                 
-                                if (Math.floor((head.time-firstIt)/(buff.cd)) >= buff.stack) {
-                                    
-                                    firstIt = -1;
-                                    iteration = 1;
-                                }
-    
-                                if (firstIt === -1) {
-                                    firstIt = head.time;
-                        
-                                }
      
                                 
                             }
@@ -422,7 +413,31 @@ pPos: string     */
     
                         
                     }
-                    //Math.floor((this.timeCalcul-firstIt)/(buff.cd)) < buff.stack
+
+                    buffActionTimes = [...new Set(buffActionTimes)];
+                    buffActionTimes.sort((a, b) => a - b);
+                    if (buffActionTimes.length !== 0) {
+
+                        for (let i = 0; i < buffActionTimes.length; i++) {
+                            iteration++;
+                                
+                                if (Math.floor((buffActionTimes[i]-firstIt)/(buff.cd)) >= buff.stack) {
+                                    
+                                    firstIt = -1;
+                                    iteration = 1;
+                                }
+    
+                                if (firstIt === -1) {
+                                    firstIt = buffActionTimes[i];
+                        
+                                }
+
+
+                            
+                        }
+                        
+                    }
+                    
                     stacks = buff.stack - iteration + (Math.floor((this.timeCalcul-firstIt)/buff.cd));
                     if (stacks > buff.stack ) {
                         stacks = buff.stack;
