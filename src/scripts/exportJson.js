@@ -2,7 +2,7 @@
 export function exportParty(party) {
     var json;
 
-    json = '{"timeCalcul":'+party.timeCalcul+', "players":[';
+    json = '{"timeCalcul":'+party.timeCalcul+',"damageLineId":'+party.damageLine.damageLineIndex+', "players":[';
 
     party.players.forEach((pInfo, key) => {
         json += '{"index":'+key+', "cumulatedShield":'+pInfo.cumulatedShield+

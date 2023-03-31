@@ -18,10 +18,7 @@ jobList.forEach(job => {
   listOptionJob.push(<option value={job.jobIndex.toString()} key={job.name}>{job.name}</option>);
 });
 
-var listOptionDLine = [];
-damageLineList.forEach(dLine => {
-  listOptionDLine.push(<option value={dLine.damageLineIndex} key={dLine.name}>{dLine.name}</option>);
-});
+
 var listJobSkills = [];
 var listPlayerActions = [];
 
@@ -359,7 +356,7 @@ updateTarget(e) {
 getOptionTarget() {
   var listOptionTarget = [];
   this.state.party.players.forEach(pInfo => {
-    listOptionTarget.push(<option value={pInfo.p.pIndex} key={pInfo.p.pIndex} >{"player"+(pInfo.p.pIndex+1).toString()}</option>);
+    listOptionTarget.push(<option value={pInfo.p.pIndex} key={pInfo.p.pIndex} >{(pInfo.p.name)}</option>);
   });
   return listOptionTarget;
 }
@@ -415,7 +412,13 @@ party;
 
   constructor (props) {
     super(props);
-    this.state = {p: props.player,party: props.party, time: 0, scrollLeft: props.scrollLeft}
+    this.state = {p: props.player,party: props.party, time: 0, scrollLeft: props.scrollLeft, modalIsOpen:false, 
+      name:props.player.name,
+      hp:props.player.hp,
+      wd:props.player.wd,
+      det:props.player.det,
+      mainstat:props.player.mainstat
+    }
     this.player = props.player;
     this.party = props.party;
   }
@@ -443,6 +446,69 @@ party;
     });
   }
 
+
+
+  
+  openModal(e) {
+    this.setState({modalIsOpen:true});
+    
+    
+  }
+
+  changeInfoModal() {
+    //this.addSkillToLine();
+    this.player = this.state.p;
+    this.player.name = this.state.name;
+    this.player.hp = this.state.hp;
+    this.player.wd = this.state.wd;
+    this.player.det = this.state.det;
+    this.player.mainstat = this.state.mainstat;
+
+    this.party.setPlayer(this.player);
+    this.setState({p:this.player,party:this.party,modalIsOpen:false});
+    
+  }
+
+
+  closeModal() {
+
+
+    this.setState({modalIsOpen:false});
+  }
+
+
+  updateName(e) {
+    this.setState({name: e.target.value})
+    
+    
+  }
+
+  updateHp(e) {
+    this.setState({hp: e.target.value})
+    
+    
+  }
+
+  updateWd(e) {
+    this.setState({wd: e.target.value})
+    
+    
+  }
+
+  updateDet(e) {
+    this.setState({det: e.target.value})
+    
+    
+  }
+
+  updateMainstat(e) {
+    this.setState({mainstat: e.target.value})
+    
+    
+  }
+
+
+
   render(){
     return <div className='player-section' style={{width: window.innerWidth-100, margin:"auto"}}>
     <div className='job-segment'style={{width: (window.innerWidth-100)*0.05}}>
@@ -450,7 +516,46 @@ party;
     <select id="jobs" className="job-selection" autoComplete="off" onChange={this.updateJob.bind(this)} >
       {listOptionJob}
     </select>
+    <div><button onClick={this.openModal.bind(this)}>Infos</button></div>
     </div>
+    <Modal
+        isOpen={this.state.modalIsOpen}
+        onRequestClose={this.closeModal.bind(this)}
+        style={customStyles}
+        contentLabel="Player informations :"
+        
+      >
+        <h2 >{this.state.p.name} informations :</h2>
+        <label>
+        Name :
+          <input type="text" name="name" onChange={this.updateName.bind(this)} defaultValue={this.state.p.name}/>
+          
+        </label><br/><br/>
+        <label>
+        HP :   
+        <input type="text" name="hp" onChange={this.updateHp.bind(this)} defaultValue={this.state.p.hp}/>
+          
+        </label><br/><br/>
+        <label title="(weapon damage)">
+        WD :   
+        <input type="text" name="wd" onChange={this.updateWd.bind(this)} defaultValue={this.state.p.wd}/>
+          
+        </label><br/><br/>
+        <label>
+        DET :   
+        <input type="text" name="det" onChange={this.updateDet.bind(this)} defaultValue={this.state.p.det}/>
+          
+        </label><br/><br/>
+        <label title="(MND,STR,INT,DEX)">
+        Mainstat :   
+        <input type="text" name="mainstat" onChange={this.updateMainstat.bind(this)} defaultValue={this.state.p.mainstat}/>
+          
+        </label><br/><br/>
+
+        <button onClick={this.changeInfoModal.bind(this)}>Update</button>
+        <button onClick={this.closeModal.bind(this)}>close</button>
+        
+      </Modal>
     <SkillLister player = {this.state.p} party = {this.state.party} time = {this.state.time} updateParty={this.updateParty} scrollLeft={this.state.scrollLeft} updateCanvas={this.updateCanvas}/>
     </div>
   }
@@ -466,12 +571,14 @@ party;
 function Interface() {
   let partyInit = createParty();
   const [party, setParty] = useState(partyInit);
+  const [listOptionDLine, setListOptionDLine] = useState(getDamageLineOptions());
   const [partyRender, setPartyRender] = useState(renderPage(party));
   const [scrollLeft, setScrollLeft] = useState(0);
+
   var index = 0;
 
-
   useEffect(() => {
+    
     updateParty(party);
     //updateCanvas(scrollLeft);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -501,9 +608,11 @@ function Interface() {
     function renderPage(party, scrollLeft) {
         
         let partyRender=[];
-
+        
         party.players.forEach(player => partyRender.push(<JobSelecter player={player.p} key={player.p.pIndex} party={party} updateParty={updateParty} updateCanvas={updateCanvas} scrollLeft={scrollLeft}/>));
         return partyRender;
+
+        
       }
 
   function updateDamageLine(e){
@@ -513,7 +622,7 @@ function Interface() {
     party.setDamageLine(damageLine);
     setParty(party);
     
-    //setPartyRender(renderPage(party));
+    setPartyRender(renderPage(party));
   }
 
 
@@ -549,6 +658,14 @@ function Interface() {
     return false;
 };
 
+function getDamageLineOptions() {
+        
+  var listOption = [];
+  damageLineList.forEach(dLine => {
+    listOption.push(<option value={dLine.damageLineIndex} key={dLine.name} >{dLine.name}</option>);
+  });
+  return listOption;
+}
   function importLines(e){
     
     
@@ -596,7 +713,7 @@ function Interface() {
           alert("Invalid File.");
           return;
         }
-        let partyjson = new Party(playerList,damageLineList.get(0));
+        let partyjson = new Party(playerList,damageLineList.get(json.damageLineId));
 
         json.players.forEach(pInfo => {
         
@@ -638,11 +755,14 @@ function Interface() {
     tag.click();
     tag.remove();
   }
+
+
+  
     
     return (<div> <h1 style={{margin:"20px"}}>Party Mitigation Planner</h1>
       <div style={{margin:"20px"}}>
         <label>Fight Damage Timeline
-        <select id="damageLine" className="dLine-selection" autoComplete="off" onChange={updateDamageLine.bind(this)} style={{margin:"20px"}}>
+        <select id="damageLine" className="dLine-selection" autoComplete="off" onChange={updateDamageLine.bind(this)} style={{margin:"20px"}} defaultValue={party.damageLine.damageLineIndex}>
       {listOptionDLine}
     </select>
     
