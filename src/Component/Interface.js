@@ -8,7 +8,7 @@ import { ActionNode } from '../Controller/ActionNode.ts';
 import { Party } from "../Controller/Party.ts";
 import Modal from "react-modal";
 import { initialiseDamageLine } from "../scripts/initialiseDamageLine.js";
-import { exportParty } from "../scripts/exportJson.js";
+import { exportParty, exportPlayer } from "../scripts/exportJson.js";
 
 
 const jobList = initialise();
@@ -60,6 +60,20 @@ function createParty() {
 
 return party;
 }
+
+
+function tryParseJSONObject (jsonString){
+  try {
+      var o = JSON.parse(jsonString);
+
+      if (o && typeof o === "object") {
+          return o;
+      }
+  }
+  catch (e) { }
+
+  return false;
+};
 
 class ActionLister extends React.Component{
     line;
@@ -508,6 +522,128 @@ party;
   }
 
 
+  exportPlayerInfos(e){
+    
+    let json = exportPlayer(this.state.p);
+
+    const blob = new Blob([json]);
+    const fileDownloadUrl = URL.createObjectURL(blob);
+
+    const tag = document.createElement('a');
+    tag.href = fileDownloadUrl;
+    tag.setAttribute('download',this.state.p.name+"_"+this.state.party.damageLine.name+"_Mitig.json");
+    document.body.appendChild(tag);
+    tag.click();
+    tag.remove();
+    URL.revokeObjectURL(fileDownloadUrl);
+
+  }
+
+  importPlayerInfos(e){
+    
+    const tag = document.createElement('input');
+    tag.type = "file";
+    tag.setAttribute('multiple',false);
+    tag.setAttribute('accept',".json");
+    tag.addEventListener('change',function (event) {
+      const fileObj = event.target.files[0];
+      const reader = new FileReader();
+
+      let fileloaded = e => {
+        let json = tryParseJSONObject(e.target.result);
+
+
+        if(!json){
+          alert('Invalid File.');
+          return;
+        }
+
+    var p = this.state.p;
+    let buffList = new Map();
+    let playerList = new Map();
+    let targetError = new Map();
+    var pName = this.state.p.name;
+
+    
+
+    
+    jobList.forEach(job => {
+      if (job.name === json.job) {
+        p = p.resetPlayer(job,json.name, json.hp, json.mp, json.wd,json.det,json.mainstat);
+       
+      }
+    });
+
+
+
+    this.state.party.players.forEach(pInfo => {
+      if (pInfo.p.name === pName) {
+      playerList.set(json.name,p);
+      }else{
+        playerList.set(pInfo.p.name,pInfo.p);
+       
+      }
+         
+    });
+
+
+
+      buffList.clear();
+      p.job.getSkills().forEach(skill => {
+        skill.getBuffs().forEach((buff, key) => {
+          buffList.set(buff.name, buff);
+        });
+        
+      });
+
+
+      
+      json.record.forEach(action => {
+        let target = undefined;
+        if (action.target && playerList.has(action.target)) {
+          target = playerList.get(action.target);
+          let buff = buffList.get(action.buff);
+        p.record.addAction(new ActionNode(buff,action.time, target));
+        }else if(!action.target){
+          target = undefined;
+          let buff = buffList.get(action.buff);
+        p.record.addAction(new ActionNode(buff,action.time, target));
+        }else{
+          
+          targetError.set(action.time,{target:action.target, buff:action.buff});
+        }
+        
+        
+      });
+    
+  
+        this.party.setPlayer(p);
+        this.setState({p:this.player,party:this.party,modalIsOpen:false});
+
+        if (targetError.size > 0) {
+          let errorText = "the spell :\n";
+        targetError.forEach((action,key) => {
+          errorText+=action.buff+" at "+Math.floor(key/60)+":"+ ('0' + Math.floor(key%60)).slice(-2)+(key%1 !== 0?"." +Math.round(key%1 *10):"")+" has not been imported because the player "+action.target+" not found\n";
+        });
+        alert(errorText);
+        }
+        
+
+        console.log(targetError);
+      }
+
+      fileloaded = fileloaded.bind(this);
+      reader.onload = fileloaded;
+      reader.readAsText(fileObj);
+      
+  }.bind(this))
+    document.body.appendChild(tag);
+    tag.click();
+    tag.remove();
+  }
+
+
+
 
   render(){
     return <div className='player-section' style={{width: window.innerWidth-100, margin:"auto"}}>
@@ -552,6 +688,10 @@ party;
           
         </label><br/><br/>
 
+
+        <button onClick={this.exportPlayerInfos.bind(this)} style={{margin:'10px'}}>Export Player</button>
+        <button onClick={this.importPlayerInfos.bind(this)} style={{margin:'10px'}}>Import Player</button>
+        <br/><br/>
         <button onClick={this.changeInfoModal.bind(this)}>Update</button>
         <button onClick={this.closeModal.bind(this)}>close</button>
         
@@ -644,27 +784,13 @@ function Interface() {
 
     const tag = document.createElement('a');
     tag.href = fileDownloadUrl;
-    tag.setAttribute('download',"PartyMitig.json");
+    tag.setAttribute('download',party.damageLine.name+"_PartyMitig.json");
     document.body.appendChild(tag);
     tag.click();
     tag.remove();
     URL.revokeObjectURL(fileDownloadUrl);
 
   }
-
-
-  function tryParseJSONObject (jsonString){
-    try {
-        var o = JSON.parse(jsonString);
-
-        if (o && typeof o === "object") {
-            return o;
-        }
-    }
-    catch (e) { }
-
-    return false;
-};
 
 
   function importLines(e){

@@ -46,3 +46,38 @@ export function exportParty(party) {
 
     return json;
 }
+
+export function exportPlayer(player) {
+    var json;
+
+
+    json = '{"job":"'+player.job.name+
+    '","hp":'+player.hp+',"mp":'+player.mp+',"wd":'+player.wd+
+    ',"det":'+player.det+',"mainstat":'+player.mainstat+
+    ',"name":"'+player.name+'"';
+
+
+    var head = player.record.head;
+
+    json+=',"record":['
+
+    if (!head) {
+        json +=','
+    }
+    while (head) {
+      json += '{"target":'
+      json += head.getTarget()? '"'+head.getTarget().name+'"' :'null';
+      json +=',"buff":"'+head.getBuff().name+
+      '","time":'+head.time+'},'
+        
+        
+        head = head.next;
+    }
+
+    json = json.substring(0,json.length-1);
+    json +="]}";
+    
+
+
+    return json;
+}

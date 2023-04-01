@@ -92,5 +92,49 @@ export class Player {
 
 
 
+    public resetPlayer(job: Job,name:string, hp:number , mp:number , wd:number , det:number , mainstat:number) {
+        
+        this.name = name;
+        if (!hp) {
+            this.hp = job.hp;
+        }else{
+            this.hp = hp;
+        }
+
+        if (!mp) {
+            this.mp = 10000;
+        }else{
+            this.mp = mp;
+        }
+
+        if (!wd) {
+            this.wd = job.wd;
+        }else{
+            this.wd = wd;
+        }
+
+        if (!det) {
+            this.det = job.det;
+        }else{
+            this.det = det;
+        }
+
+        if (!mainstat) {
+            this.mainstat = job.mainstat;
+        }else{
+            this.mainstat = mainstat;
+        }
+        
+        
+        this.job = job;
+        
+        this.record = new Line();
+
+
+        return this;
+    }
+
+
+
 
 }
