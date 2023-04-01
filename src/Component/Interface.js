@@ -913,7 +913,7 @@ function Interface() {
         You can see a skill's name with your mouse over the skill.<br/>
         You can select a specific time with left click on the timeline (not on a skill).<br/>
         You can unselect specific time with right click on the timeline (not on a skill).<br/>
-        You can see the name and the damage type of a boss's skill with your mouse over a little red triangle at the bottom of the timeline.<br/>
+        You can see the name and the damage type of a boss skill with your mouse over a little red triangle at the bottom of the timeline.<br/>
         <br/></p>
         <br/>
       Can i change my stats if I am not using the same best in slot?<br/>
