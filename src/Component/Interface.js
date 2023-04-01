@@ -902,6 +902,24 @@ function Interface() {
     
     <br/>
       <div>{partyRender}</div>
+      <br/><br/>
+      <div style={{margin:"20px"}}>
+      Help: <br/>
+      <br/>
+      What can I do with the timeline? <br/>
+      <p style={{margin:"20px"}}>
+        You can drag and drop skills with a left click on a skill.<br/>
+        You can delete a skill with right click.<br/>
+        You can see a skill's name with your mouse over the skill.<br/>
+        You can select a specific time with left click on the timeline (not on a skill).<br/>
+        You can unselect specific time with right click on the timeline (not on a skill).<br/>
+        You can see the name and the damage type of a boss's skill with your mouse over a little red triangle at the bottom of the timeline.<br/>
+        <br/></p>
+        <br/>
+      Can i change my stats if I am not using the same best in slot?<br/>
+      <p style={{margin:"20px"}}> Yes, click on 'Infos' then change your stats. Click on 'Update' when you have finished.<br/></p>
+      <br/><br/>
+        </div>
     </div>
     )
   }
