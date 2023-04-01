@@ -571,24 +571,33 @@ party;
 function Interface() {
   let partyInit = createParty();
   const [party, setParty] = useState(partyInit);
-  const [listOptionDLine, setListOptionDLine] = useState(getDamageLineOptions());
+  let listOptionDLine=[];
   const [partyRender, setPartyRender] = useState(renderPage(party));
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [dLineIndex, setDLineIndex] = useState(partyInit.damageLine.damageLineIndex);
+
+
+  damageLineList.forEach(dLine => {
+    listOptionDLine.push(<option value={dLine.damageLineIndex} key={dLine.name} >{dLine.name}</option>);
+  });
+
 
   var index = 0;
 
   useEffect(() => {
     
     updateParty(party);
+    
     //updateCanvas(scrollLeft);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [party]);
+  }, [party,dLineIndex]);
 
 
 
 
   function updateParty(p) {
     p.players.forEach(player => p.updateStatPlayer(player.p));
+    setDLineIndex(p.damageLine.damageLineIndex)
     //setParty(p);
     setPartyRender(renderPage(p,scrollLeft));
     
@@ -608,7 +617,6 @@ function Interface() {
     function renderPage(party, scrollLeft) {
         
         let partyRender=[];
-        
         party.players.forEach(player => partyRender.push(<JobSelecter player={player.p} key={player.p.pIndex} party={party} updateParty={updateParty} updateCanvas={updateCanvas} scrollLeft={scrollLeft}/>));
         return partyRender;
 
@@ -621,7 +629,7 @@ function Interface() {
     
     party.setDamageLine(damageLine);
     setParty(party);
-    
+    setDLineIndex(party.damageLine.damageLineIndex);
     setPartyRender(renderPage(party));
   }
 
@@ -658,14 +666,7 @@ function Interface() {
     return false;
 };
 
-function getDamageLineOptions() {
-        
-  var listOption = [];
-  damageLineList.forEach(dLine => {
-    listOption.push(<option value={dLine.damageLineIndex} key={dLine.name} >{dLine.name}</option>);
-  });
-  return listOption;
-}
+
   function importLines(e){
     
     
@@ -762,7 +763,7 @@ function getDamageLineOptions() {
     return (<div> <h1 style={{margin:"20px"}}>Party Mitigation Planner</h1>
       <div style={{margin:"20px"}}>
         <label>Fight Damage Timeline
-        <select id="damageLine" className="dLine-selection" autoComplete="off" onChange={updateDamageLine.bind(this)} style={{margin:"20px"}} defaultValue={party.damageLine.damageLineIndex}>
+        <select id="damageLine" className="dLine-selection" autoComplete="off" onChange={updateDamageLine.bind(this)} style={{margin:"20px"}} defaultValue={dLineIndex}>
       {listOptionDLine}
     </select>
     

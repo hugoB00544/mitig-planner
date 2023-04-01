@@ -131,7 +131,7 @@ function drawDamageLine(ctx:CanvasRenderingContext2D, canvas:HTMLCanvasElement) 
     return getActionFromPosition(x,y);
   }
   
-  function getActionFromPosition(x:Number,y:Number) {
+  function getActionFromPosition(x:number,y:number) {
     let line = player.record;
     let head = line?.head;
     let listAction = new Map<string,ActionNode>();
@@ -164,7 +164,7 @@ function drawDamageLine(ctx:CanvasRenderingContext2D, canvas:HTMLCanvasElement) 
     return getDamageFromPosition(x,y);
   }
   
-  function getDamageFromPosition(x:Number,y:Number) {
+  function getDamageFromPosition(x:number,y:number) {
     let DamageLine = party.damageLine;
     let head = DamageLine.head;
     var prevHead = undefined;
