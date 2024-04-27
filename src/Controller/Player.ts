@@ -6,6 +6,7 @@ export class Player {
     readonly pIndex: number;
     job: Job;
     hp: number;
+    maxhp:number;
     mp: number;
     wd: number;
     det: number;
@@ -22,9 +23,11 @@ export class Player {
         this.name = name;
         if (!hp) {
             this.hp = job.hp;
+
         }else{
             this.hp = hp;
         }
+        this.maxhp = this.hp;
 
         if (!mp) {
             this.mp = 10000;
@@ -78,6 +81,7 @@ export class Player {
         
         this.job = job;
         this.hp = job.hp;
+        this.maxhp = job.hp;
         this.wd = job.wd;
         this.det = job.det;
         this.mainstat = job.mainstat;

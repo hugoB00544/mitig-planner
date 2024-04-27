@@ -12,14 +12,16 @@ export class DamageNode {
     name: string;
     time: number;
     type:DamageType;
+    damage:number;
 
     next?: DamageNode = undefined;
 
-    constructor(name: string, time: number, type: DamageType) {
+    constructor(name: string, time: number, type: DamageType,damage:number) {
         this.#damageIndex = DamageNode._gDamageIndex;
         this.name = name;
         this.time = time;
         this.type = type;
+        this.damage = damage;
 
         DamageNode._gDamageIndex++;
         

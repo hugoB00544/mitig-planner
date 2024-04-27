@@ -247,7 +247,7 @@ function drawDamageLine(ctx:CanvasRenderingContext2D, canvas:HTMLCanvasElement) 
           ctx.fillRect(0,35,width,20);
           ctx.font = "14px serif";
           ctx.fillStyle = "#000000";
-          ctx.fillText(damage.head.name+'  ('+damage.head.type+' )', damage.head.time*30, 50);
+          ctx.fillText(damage.head.name+'  ('+damage.head.type+' = '+damage.head.damage+' )', damage.head.time*30, 50);
             
           
         }else{

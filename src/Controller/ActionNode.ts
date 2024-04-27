@@ -42,6 +42,7 @@ export class ActionNode {
     public getParryRate(){return this.#buff.getParryRate();}
     public getDuration(){return this.#buff.getDuration();}
     public getStack(){return this.#buff.getStack();}
+    public getType(){return this.#buff.getType();}
     public getIcon(){return this.#buff.icon;}
     public getCurrentDuration(){return this.#currentDuration;}
     public getCurrentStack(){return this.#currentStack;}

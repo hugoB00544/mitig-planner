@@ -1,3 +1,4 @@
+
 export class Buff {
     static _gBuffIndex: number = 0;
     readonly buffIndex: number;
@@ -14,12 +15,13 @@ export class Buff {
     readonly reusable: boolean;
     readonly name: string;
     readonly icon: string;
+    readonly type: string;
 
     
 
     constructor(potency: number, reducedMaxHp: number, reducedPhysic: number,
          reducedMagic: number, parryRate: number, duration: number, cd: number, stack: number,
-          groupMitig: boolean, targetable: boolean, name: string, icon: string, reusable:boolean) {
+          groupMitig: boolean, targetable: boolean, name: string, icon: string, reusable:boolean, type:string) {
         this.buffIndex = Buff._gBuffIndex;
         this.potency = potency;
         this.reducedMaxHp = reducedMaxHp;
@@ -34,6 +36,7 @@ export class Buff {
         this.name = name;
         this.icon = icon;
         this.reusable = reusable;
+        this.type = type;
         Buff._gBuffIndex++;
     }
 
@@ -47,6 +50,7 @@ export class Buff {
     public getParryRate(){return this.parryRate;}
     public getDuration(){return this.duration;}
     public getStack(){return this.stack;}
+    public getType(){return this.type;}
     public getCd(){return this.cd;}
     public groupedMitig(){return this.groupMitig;}
     public isTargetable(){return this.targetable;}
@@ -64,7 +68,8 @@ export class Buff {
             'stack':this.stack,
             'cd':this.cd,
             'groupMitig':this.groupMitig,
-            'targetable':this.targetable
+            'targetable':this.targetable,
+            'type': this.type
         }
     }
     

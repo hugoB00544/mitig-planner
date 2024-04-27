@@ -207,7 +207,7 @@ render(){
   
   return <div style={{display:"flex", flex: "auto", flexDirection:"row"}}>
     <div style={{width: (window.innerWidth-100)*0.10}}> 
-    hp: {this.state.p.hp}  <br/>  
+    hp: {this.state.p.hp} / {this.state.p.maxhp} <br/>  
     shield: {this.state.party.players.get(this.state.p.pIndex).cumulatedShield}   <br/>
     mitig physic: {this.state.party.players.get(this.state.p.pIndex).cumulatedPhyMitig}  <br/> 
     mitig magic: {this.state.party.players.get(this.state.p.pIndex).cumulatedMagMitig}   <br/>

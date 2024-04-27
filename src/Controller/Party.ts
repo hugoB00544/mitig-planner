@@ -100,6 +100,7 @@ pPos: string     */
                 this.players.get(player.pIndex)!.cumulatedPhyMitig = 0;
                 this.players.get(player.pIndex)!.cumulatedMagMitig = 0;
                 this.players.get(player.pIndex)!.parryRate = 0;
+                this.players.get(player.pIndex)!.p.hp = 0;
             
         
         
@@ -113,6 +114,7 @@ pPos: string     */
             }
 
             if (actionInfo.action.getPotency()>0) {
+
                 let mainstat = Math.floor(actionInfo.player.mainstat*(1+(0.01*5)));
                 let shield = Math.floor(actionInfo.action.getPotency()*(Math.floor(((390*115)/1000))+actionInfo.player.wd)*((100+Math.floor(((mainstat-390)*569/1522)))/100));
                 shield = Math.floor(shield*((1000+ Math.floor((140*(actionInfo.player.det-390)/1900)))/1000));
@@ -123,8 +125,14 @@ pPos: string     */
                     shield = Math.floor(shield*1.3);
                 }
                 
-
-                this.players.get(player.pIndex)!.cumulatedShield += shield;
+                if(actionInfo.action.getType() === "Mitig"){
+                    this.players.get(player.pIndex)!.cumulatedShield += shield;
+                }else if (actionInfo.action.getType() === "Heal") {
+                    this.players.get(player.pIndex)!.p.hp += shield;
+                    if(this.players.get(player.pIndex)!.p.hp >this.players.get(player.pIndex)!.p.maxhp){
+                        this.players.get(player.pIndex)!.p.hp = this.players.get(player.pIndex)!.p.maxhp;
+                    } 
+                }
 
             }
 
@@ -208,6 +216,31 @@ pPos: string     */
         );
 
         return this.correctImpossibleCase(listAppliedBuffs);
+        
+    }
+
+
+    public getDamageTaken(type:string) {
+
+        var damage = 0;
+
+            let head = this.damageLine.head;
+            
+            if (this.damageLine.head) {
+            
+                while (head) {
+                    if (head.type === type) {
+                        
+                                damage += head.damage;
+                            
+                    }
+                    
+                    head = head.next;
+                
+                    }
+            }
+        
+        return damage;
         
     }
 
