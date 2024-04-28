@@ -22,8 +22,8 @@ export function initialise() {
     const BIntervention_Knight_s_Resolve = new Buff(0,0,10,10,0,4,10,1,false,true,"Knight's Resolve (Intervention)","https://assets.rpglogs.com/img/ff/abilities/012000-012516.png",false,"Mitig");
     const BHoly_Sheltron_Knight_s_Resolve = new Buff(0,0,15,15,0,4,10,1,false,true,"Knight's Resolve (Holy Sheltron)","https://assets.rpglogs.com/img/ff/abilities/012000-012516.png",false,"Mitig");
     const BIntervention = new Buff(0,0,10,10,0,8,10,1,false,false,"Intervention","https://assets.rpglogs.com/img/ff/abilities/012000-012511.png",false,"Mitig");
-    const BHoly_Sheltron  = new Buff(0,0,15,15,0,8,5,1,false,false,"Holy Sheltron ","https://assets.rpglogs.com/img/ff/abilities/012000-012515.png",false,"Mitig");
-    const BBulwark  = new Buff(0,0,0,0,100,10,90,1,false,false,"Bulwark ","https://assets.rpglogs.com/img/ff/abilities/010000-010156.png",false,"Mitig");
+    const BHoly_Sheltron  = new Buff(0,0,15,15,0,8,5,1,false,false,"Holy Sheltron","https://assets.rpglogs.com/img/ff/abilities/012000-012515.png",false,"Mitig");
+    const BBulwark  = new Buff(0,0,0,0,100,10,90,1,false,false,"Bulwark","https://assets.rpglogs.com/img/ff/abilities/010000-010156.png",false,"Mitig");
     let Divine_Veil = new Skill("Divine Veil","https://img.finalfantasyxiv.com/lds/d/495faab61344751872ca0867e2d5e59b04c6940c.png");
     Divine_Veil.addBuff(BDivine_Veil);
     let Sentinel = new Skill("Sentinel","https://img.finalfantasyxiv.com/lds/d/913eb4344bb6c8710f250115fa22484b026f08bd.png");

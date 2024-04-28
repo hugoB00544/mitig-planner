@@ -3,7 +3,7 @@ import { DamageLine } from "../Controller/DamageLine.ts";
 
 export function initialiseDamageLine(){
 
-    let LineP8sP1Gorgon = new DamageLine("P8S P1 Gorgon first");
+    let LineP8sP1Gorgon = new DamageLine("P8S P1 Gorgon first",0);
     LineP8sP1Gorgon.addDamage(new DamageNode("Genesis of Flame",12,DamageType.Magic,50000));
     LineP8sP1Gorgon.addDamage(new DamageNode("Tetra/Octaflare",41,DamageType.Magic,50000));
     LineP8sP1Gorgon.addDamage(new DamageNode("Flameviper",48,DamageType.Magic,50000));
@@ -39,7 +39,7 @@ export function initialiseDamageLine(){
     LineP8sP1Gorgon.addDamage(new DamageNode("Genesis of Flame",459,DamageType.Magic,50000));
 
 
-    let LineP8sP1Dog = new DamageLine("P8S P1 Dog first");
+    let LineP8sP1Dog = new DamageLine("P8S P1 Dog first",1);
     LineP8sP1Dog.addDamage(new DamageNode("Genesis of Flame",2,DamageType.Magic,50000));
     LineP8sP1Dog.addDamage(new DamageNode("Tetra/Octaflare",41,DamageType.Magic,50000));
     LineP8sP1Dog.addDamage(new DamageNode("Flameviper",48,DamageType.Magic,50000));
@@ -76,7 +76,7 @@ export function initialiseDamageLine(){
 
 
 
-    let LineP8sP2 = new DamageLine("P8S P2");
+    let LineP8sP2 = new DamageLine("P8S P2",2);
     LineP8sP2.addDamage(new DamageNode("Aioniopyr",15,DamageType.Magic,50000));
     LineP8sP2.addDamage(new DamageNode("Tyrant's Unholy Darkness",27,DamageType.Magic,50000));
     LineP8sP2.addDamage(new DamageNode("Forcible Fire III",58,DamageType.Magic,50000));
@@ -130,10 +130,67 @@ export function initialiseDamageLine(){
     LineP8sP2.addDamage(new DamageNode("Ego Death",506,DamageType.Death,50000));
 
 
+    let LineP12sP1 = new DamageLine("P12S P1",3);
+    LineP12sP1.addDamage(new DamageNode("On the Soul",12,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("White Flame",38,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("White Flame",43,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Polarized Sear",75,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Polarized Glow",76,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Polarized Advance",79,DamageType.Magic,50000));
+
+    LineP12sP1.addDamage(new DamageNode("On the Soul",89,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Glaukopis",98,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Glaukopis",101,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Radiation/Emission",129,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Polarized Ray",136,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Polarized Glow",145,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Thoes's Holy",146,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Plarized Advance",148,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Peridialogos/Apodialogos",172,DamageType.Magic,50000));
+
+    LineP12sP1.addDamage(new DamageNode("On the Soul",180,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Shock",214,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Polarized Sear",215,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Polarized Glow",222,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("White Flame",223,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Polarized Advance",225,DamageType.Magic,50000));
+
+    LineP12sP1.addDamage(new DamageNode("On the Soul",231,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Glaukopis",243,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Glaukopis",247,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Ultima Blade",269,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Palladion + White Flame",292,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("White Flame",294,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Palladion",295,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("White Flame + Palladion",298,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("White Flame",300,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Palladion",301,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("White Flame",303,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Palladion",304,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("White Flame + Palladion",307,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("White Flame",309,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Palladion",311,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("White Flame",313,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Palladion",314,DamageType.Magic,50000));
+
+    LineP12sP1.addDamage(new DamageNode("Thoes's Ultima",335,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Radiation/Emission",367,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Radiation/Emission",376,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Peridialogos/Apodialogos",382,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("On the Soul",390,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Radiation/Emission",425,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Radiation/Emission",434,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("On the Soul",445,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("On the Soul",453,DamageType.Magic,50000));
+    LineP12sP1.addDamage(new DamageNode("Thoes's Ultima",468,DamageType.Magic,50000));
+    
+
+
     let DamageLineList = new Map();
     DamageLineList.set(LineP8sP1Gorgon.damageLineIndex, LineP8sP1Gorgon);
     DamageLineList.set(LineP8sP1Dog.damageLineIndex, LineP8sP1Dog);
     DamageLineList.set(LineP8sP2.damageLineIndex, LineP8sP2);
+    DamageLineList.set(LineP12sP1.damageLineIndex, LineP12sP1);
 
 
     return DamageLineList;

@@ -4,13 +4,16 @@ import './Style/index.css';
 import Interface from './Component/Interface.js';
 import reportWebVitals from './scripts/reportWebVitals.js';
 import { HashRouter, Routes, Route} from "react-router-dom";
-
+import InterfaceParty from './Component/InterfaceParty.js';
+import InterfaceSolo from './Component/InterfaceSolo.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <HashRouter>
     <Routes>
       <Route path={"/"} element={<Interface/>}/>
+      <Route path={"/solo"} element={<InterfaceSolo/>} />
+      <Route path={"/party"} element={<InterfaceParty/>} />
     </Routes>
   </HashRouter>
     

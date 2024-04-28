@@ -1,17 +1,15 @@
 import { DamageNode } from "./DamageNode";
 
 export class DamageLine {
-	static _gDamageLineIndex: number = 0;
 	damageLineIndex: number;
 
 	head?: DamageNode;
 	tail?: DamageNode;
 	name: string = "(anonymous line)";
 
-	constructor(name:string) {
-		this.damageLineIndex = DamageLine._gDamageLineIndex;
+	constructor(name:string,id:number) {
+		this.damageLineIndex = id;
         this.name=name;
-		DamageLine._gDamageLineIndex++;
 	}
 	addDamage(damage: DamageNode) {
 		console.assert(damage);

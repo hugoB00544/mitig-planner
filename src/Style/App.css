@@ -70,7 +70,6 @@
 
 .player-section{
   border: 1px solid lightgrey;
-  height: 12.5%;
   display: flex;
   flex: auto;
   flex-direction: row;
@@ -81,6 +80,12 @@
   height: 40px;
   margin: 5px;
   cursor: pointer;
+}
+
+.skill-icon-TL{
+  width: 30px;
+  height: 30px;
+  
 }
 
 .skills-section{
@@ -125,6 +130,16 @@
   color: rgb(255, 255, 255);
   text-shadow: -2px 2px 10px rgba(0, 0, 0, 1);
   font-weight: bold;
+}
+
+.container-TL {
+  position: relative;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  text-shadow: -2px 2px 10px rgba(0, 0, 0, 1);
+  font-weight: bold;
+  height: 35;
+  margin: 6px;
 }
 
 .centered {

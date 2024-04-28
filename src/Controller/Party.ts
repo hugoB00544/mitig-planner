@@ -86,6 +86,30 @@ pPos: string     */
     }
 
 
+    /**
+     * getGlobalLastDamageTime
+     */
+    public getGlobalLastDamageTime() {
+        var time = 0;
+
+        var head = this.damageLine.head;
+    
+        while (head) {
+             
+            let timeP = head.time;
+            if (timeP > time) {
+                time = timeP
+            }
+                
+        head = head.next;
+        }
+        return time;
+    }
+
+
+    
+
+
     public setTimeCalcul(time:number) {
         this.timeCalcul = Math.round(time*100)/100
     }
