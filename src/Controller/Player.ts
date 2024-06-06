@@ -21,12 +21,11 @@ export class Player {
     constructor(job: Job,name:string, hp:number , mp:number , wd:number , det:number , mainstat:number) {
         this.pIndex = Player._gPIndex;
         this.name = name;
-        if (!hp) {
-            this.hp = job.hp;
-
-        }else{
-            this.hp = hp;
-        }
+        
+        this.hp = job.hp;
+        
+        
+        
         this.maxhp = this.hp;
 
         if (!mp) {
@@ -99,11 +98,9 @@ export class Player {
     public resetPlayer(job: Job,name:string, hp:number , mp:number , wd:number , det:number , mainstat:number) {
         
         this.name = name;
-        if (!hp) {
-            this.hp = job.hp;
-        }else{
-            this.hp = hp;
-        }
+        
+        this.hp = job.hp;
+        this.maxhp = job.hp;
 
         if (!mp) {
             this.mp = 10000;

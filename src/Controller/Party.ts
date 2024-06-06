@@ -124,7 +124,7 @@ pPos: string     */
                 this.players.get(player.pIndex)!.cumulatedPhyMitig = 0;
                 this.players.get(player.pIndex)!.cumulatedMagMitig = 0;
                 this.players.get(player.pIndex)!.parryRate = 0;
-                this.players.get(player.pIndex)!.p.hp = 0;
+                this.players.get(player.pIndex)!.p.hp = this.players.get(player.pIndex)!.p.maxhp;
             
         
         
