@@ -140,6 +140,7 @@
   font-weight: bold;
   height: 35;
   margin: 6px;
+  align-content: center;
 }
 
 .centered {

@@ -14,15 +14,15 @@ export function initialise() {
 
 
     //Setup PLD
-    let PLD = new Job("PLD", "https://img.finalfantasyxiv.com/lds/promo/h/V/NUXU4h6iXzF8HS4BxHKYf7vOa0.png",108484, 126,1844,3055,2.50);
+    let PLD = new Job("PLD", "https://img.finalfantasyxiv.com/lds/promo/h/V/NUXU4h6iXzF8HS4BxHKYf7vOa0.png",122878, 132,2182,3311,2.50);
     const BDivine_Veil = new Buff(0,10,0,0,0,30,90,1,true,false,"Divine Veil","https://assets.rpglogs.com/img/ff/abilities/012000-012509.png",false,"Mitig");
     const BSentinel = new Buff(0,0,30,30,0,15,120,1,false,false,"Sentinel","https://assets.rpglogs.com/img/ff/abilities/010000-010151.png",false,"Mitig");
     const BPassage_of_Arms = new Buff(0,0,0,0,100,18,120,1,false,false,"Passage of Arms","https://xivapi.com/i/012000/012512.png",false,"Mitig");
     const BArms_Up = new Buff(0,0,15,15,0,18,120,1,true,false,"Arms Up","https://assets.rpglogs.com/img/ff/abilities/012000-012513.png",false,"Mitig");
-    const BIntervention_Knight_s_Resolve = new Buff(0,0,10,10,0,4,10,1,false,true,"Knight's Resolve (Intervention)","https://assets.rpglogs.com/img/ff/abilities/012000-012516.png",false,"Mitig");
-    const BHoly_Sheltron_Knight_s_Resolve = new Buff(0,0,15,15,0,4,10,1,false,true,"Knight's Resolve (Holy Sheltron)","https://assets.rpglogs.com/img/ff/abilities/012000-012516.png",false,"Mitig");
-    const BIntervention = new Buff(0,0,10,10,0,8,10,1,false,false,"Intervention","https://assets.rpglogs.com/img/ff/abilities/012000-012511.png",false,"Mitig");
-    const BHoly_Sheltron  = new Buff(0,0,15,15,0,8,5,1,false,false,"Holy Sheltron","https://assets.rpglogs.com/img/ff/abilities/012000-012515.png",false,"Mitig");
+    const BIntervention_Knight_s_Resolve = new Buff(0,0,10,10,0,4,30,2,false,true,"Knight's Resolve (Intervention)","https://assets.rpglogs.com/img/ff/abilities/012000-012516.png",false,"Mitig");
+    const BHoly_Sheltron_Knight_s_Resolve = new Buff(0,0,15,15,0,4,30,2,false,true,"Knight's Resolve (Holy Sheltron)","https://assets.rpglogs.com/img/ff/abilities/012000-012516.png",false,"Mitig");
+    const BIntervention = new Buff(0,0,10,10,0,8,30,2,false,false,"Intervention","https://assets.rpglogs.com/img/ff/abilities/012000-012511.png",false,"Mitig");
+    const BHoly_Sheltron  = new Buff(0,0,15,15,0,8,30,2,false,false,"Holy Sheltron","https://assets.rpglogs.com/img/ff/abilities/012000-012515.png",false,"Mitig");
     const BBulwark  = new Buff(0,0,0,0,100,10,90,1,false,false,"Bulwark","https://assets.rpglogs.com/img/ff/abilities/010000-010156.png",false,"Mitig");
     let Divine_Veil = new Skill("Divine Veil","https://img.finalfantasyxiv.com/lds/d/495faab61344751872ca0867e2d5e59b04c6940c.png");
     Divine_Veil.addBuff(BDivine_Veil);
@@ -49,7 +49,7 @@ export function initialise() {
     PLD.addSkill(Bulwark);
 
     //Setup WAR
-    let WAR = new Job("WAR", "https://img.finalfantasyxiv.com/lds/promo/h/0/U3f8Q98TbAeGvg_vXiHGOaa2d4.png",108634,126,1844,3055,2.50);
+    let WAR = new Job("WAR", "https://img.finalfantasyxiv.com/lds/promo/h/0/U3f8Q98TbAeGvg_vXiHGOaa2d4.png",123028,132,2182,3330,2.50);
     const BShake_It_Off = new Buff(0,15,0,0,0,30,90,1,true,false,"Shake It Off","https://assets.rpglogs.com/img/ff/abilities/012000-012557.png",false,"Mitig");
     const BVengeance = new Buff(0,0,30,30,0,15,120,1,false,false,"Vengeance","https://xivapi.com/i/010000/010256.png",false,"Mitig");
     const BBloodwhetting = new Buff(0,0,10,10,0,8,25,1,false,false,"Bloodwhetting","https://assets.rpglogs.com/img/ff/abilities/012000-012562.png",false,"Mitig");
@@ -70,7 +70,7 @@ export function initialise() {
     WAR.addSkill(Bloodwhetting);
 
     //Setup DRK
-    let DRK = new Job("DRK", "https://img.finalfantasyxiv.com/lds/promo/h/9/5JT3hJnBNPZSLAijAF9u7zrueQ.png",108484,126,1844,3055,2.50);
+    let DRK = new Job("DRK", "https://img.finalfantasyxiv.com/lds/promo/h/9/5JT3hJnBNPZSLAijAF9u7zrueQ.png",122878,132,2182,3330,2.50);
     const BDark_Missionary = new Buff(0,0,0,10,0,15,90,1,true,false,"Dark Missionary","https://xivapi.com/i/013000/013122.png",false,"Mitig");
     const BDark_Mind = new Buff(0,0,0,20,0,10,60,1,false,false,"Dark Mind","https://xivapi.com/i/013000/013114.png",false,"Mitig");
     const BShadow_Wall = new Buff(0,0,30,30,0,15,120,1,false,false,"Shadow Wall","https://xivapi.com/i/013000/013113.png",false,"Mitig");
@@ -95,7 +95,7 @@ export function initialise() {
     DRK.addSkill(Oblation);
 
     //Setup GNB
-    let GNB = new Job("GNB", "https://img.finalfantasyxiv.com/lds/promo/h/8/fc5PYpEFGrg4qPYDq_YBbCy1X0.png",108484,126,1844,3055,2.50);
+    let GNB = new Job("GNB", "https://img.finalfantasyxiv.com/lds/promo/h/8/fc5PYpEFGrg4qPYDq_YBbCy1X0.png",122878,132,2182,3311,2.50);
     const BNebula = new Buff(0,0,30,30,0,15,120,1,false,false,"Nebula","https://xivapi.com/i/013000/013604.png",false,"Mitig");
     const BHeart_of_Light = new Buff(0,0,0,10,0,15,90,1,true,false,"Heart of Light","https://xivapi.com/i/013000/013609.png",false,"Mitig");
     const BBrutal_Shell  = new Buff(200,0,0,0,0,30,0,1,false,false,"Brutal Shell","https://xivapi.com/i/013000/013614.png",false,"Mitig");
@@ -123,7 +123,7 @@ export function initialise() {
 
 
     //Setup WHM
-    let WHM = new Job("WHM", "https://img.finalfantasyxiv.com/lds/promo/h/G/Na619RGtVtbEvNn1vyFoSlvZ84.png",68444,126,1792,3092,2.42);
+    let WHM = new Job("WHM", "https://img.finalfantasyxiv.com/lds/promo/h/G/Na619RGtVtbEvNn1vyFoSlvZ84.png",77580,132,1941,3365,2.39);
     const BDivine_Benison = new Buff(500,0,0,0,0,15,30,2,false,true,"Divine Benison","https://xivapi.com/i/012000/012632.png",false,"Mitig");
     const BTemperance = new Buff(0,0,10,10,0,20,120,1,true,false,"Temperance","https://xivapi.com/i/012000/012634.png",false,"Mitig");
     const BAquaveil = new Buff(0,0,15,15,0,8,60,1,false,true,"Aquaveil","https://xivapi.com/i/012000/012638.png",false,"Mitig");
@@ -138,7 +138,7 @@ export function initialise() {
     WHM.addSkill(Aquaveil);
 
     //Setup AST
-    let AST = new Job("AST", "https://img.finalfantasyxiv.com/lds/promo/h/E/g7JY4S1D-9S26VarEuIkPGIrFM.png",67909,126,1750,3077,2.31);
+    let AST = new Job("AST", "https://img.finalfantasyxiv.com/lds/promo/h/E/g7JY4S1D-9S26VarEuIkPGIrFM.png",77556,132,2047,3369,2.34);
     const BCollective_Unconscious = new Buff(0,0,10,10,0,18,60,1,true,false,"Collective Unconscious","https://xivapi.com/i/013000/013227.png",false,"Mitig");
     const BIntersection = new Buff(400,0,0,0,0,30,30,2,false,true,"Intersection","https://xivapi.com/i/013000/013250.png",false,"Mitig");
     const BNeutral_Sect = new Buff(0,0,0,0,0,20,120,1,true,false,"Neutral Sect","https://xivapi.com/i/013000/013253.png",false,"Mitig");
@@ -166,7 +166,7 @@ export function initialise() {
 
 
     //Setup SCH
-    let SCH = new Job("SCH", "https://img.finalfantasyxiv.com/lds/promo/h/s/2r8fm3U0Io7Pw1XT1tvnjPthp4.png",68395,126,1523,3096,2.40);
+    let SCH = new Job("SCH", "https://img.finalfantasyxiv.com/lds/promo/h/s/2r8fm3U0Io7Pw1XT1tvnjPthp4.png",77799,132,1981,3379,2.40);
     const BGalvanize = new Buff(540,0,0,0,0,30,0,1,false,true,"Galvanize","https://assets.rpglogs.com/img/ff/abilities/012000-012801.png",false,"Mitig");
     const BSuccor = new Buff(320,0,0,0,0,30,0,1,true,false,"Succor","https://assets.rpglogs.com/img/ff/abilities/012000-012801.png",false,"Mitig");
     const BDesperate_Measures = new Buff(0,0,10,10,0,20,120,1,true,false,"Desperate Measures","https://assets.rpglogs.com/img/ff/abilities/012000-012816.png",false,"Mitig");
@@ -194,7 +194,7 @@ export function initialise() {
     SCH.addSkill(Succor);
 
     //Setup SGE
-    let SGE = new Job("SGE", "https://img.finalfantasyxiv.com/lds/promo/h/e/G0lQTD01LdCGk5pECSc7fbbmbM.png",68444,126,1900,3093,2.42);
+    let SGE = new Job("SGE", "https://img.finalfantasyxiv.com/lds/promo/h/e/G0lQTD01LdCGk5pECSc7fbbmbM.png",77653,132,2211,3369,2.43);
     const BEukrasian_Prognosis = new Buff(320,0,0,0,0,30,0,1,true,false,"Eukrasian Prognosis","https://xivapi.com/i/012000/012954.png",false,"Mitig");
     const BKerachole = new Buff(0,0,10,10,0,15,30,1,true,false,"Kerachole","https://xivapi.com/i/012000/012964.png",false,"Mitig");
     const BHolos_shield = new Buff(300,0,0,0,0,30,120,1,true,false,"Holos (shield)","https://assets.rpglogs.com/img/ff/abilities/012000-012972.png",false,"Mitig");
@@ -239,7 +239,7 @@ export function initialise() {
     Feint.addBuff(BFeint);
 
     //Setup NIN
-    let NIN = new Job("NIN", "https://img.finalfantasyxiv.com/lds/promo/h/N/EXvdQYvr1Rn4En8AKssbVwwcac.png",75435,126,1504,3076,2.10);
+    let NIN = new Job("NIN", "https://img.finalfantasyxiv.com/lds/promo/h/N/EXvdQYvr1Rn4En8AKssbVwwcac.png",85860,132,1789,3360,2.12);
     const BShade_Shift = new Buff(0,20,0,0,0,20,120,1,false,false,"Shade Shift","https://assets.rpglogs.com/img/ff/abilities/010000-010605.png",false,"Mitig");
     let Shade_Shift = new Skill("Shade Shift","https://img.finalfantasyxiv.com/lds/d/533a4a3e924aaf268ee89a9c58845941bb73bad1.png");
     Shade_Shift.addBuff(BShade_Shift);
@@ -247,11 +247,11 @@ export function initialise() {
     NIN.addSkill(Shade_Shift);
     
     //Setup DRG
-    let DRG = new Job("DRG", "https://img.finalfantasyxiv.com/lds/promo/h/1/zWRkXGJIJhN7WHGGv1gVscRxmA.png",76179,126,1545,3096,2.50);
+    let DRG = new Job("DRG", "https://img.finalfantasyxiv.com/lds/promo/h/1/zWRkXGJIJhN7WHGGv1gVscRxmA.png",86628,132,1818,3379,2.50);
     DRG.addSkill(Feint);
     
     //Setup SAM
-    let SAM = new Job("SAM", "https://img.finalfantasyxiv.com/lds/promo/h/J/Ra2GV79gVQhy6SwCrU19boTghc.png",75513,126,1571,3083,2.15);
+    let SAM = new Job("SAM", "https://img.finalfantasyxiv.com/lds/promo/h/J/Ra2GV79gVQhy6SwCrU19boTghc.png",85987,132,1736,3367,2.15);
     const BThird_Eye = new Buff(0,0,10,10,0,4,15,1,false,false,"Third Eye","https://xivapi.com/i/013000/013307.png",false,"Mitig");
     let Third_Eye = new Skill("Third Eye","https://img.finalfantasyxiv.com/lds/d/3c97e963e92ae242000e51159d9eb749897d8a68.png");
     Third_Eye.addBuff(BThird_Eye);
@@ -259,7 +259,7 @@ export function initialise() {
     SAM.addSkill(Third_Eye);
 
     //Setup MNK
-    let MNK = new Job("MNK", "https://img.finalfantasyxiv.com/lds/promo/h/C/Ce_VQB6VPPJKTGJwxf3h5iujp4.png",75446,126,1546,3072,1.94);
+    let MNK = new Job("MNK", "https://img.finalfantasyxiv.com/lds/promo/h/C/Ce_VQB6VPPJKTGJwxf3h5iujp4.png",85920,132,1453,3356,1.94);
     const BRiddle_of_Earth = new Buff(0,0,20,20,0,10,120,1,false,false,"Riddle of Earth","https://assets.rpglogs.com/img/ff/abilities/012000-012527.png",false,"Mitig");
     let Riddle_of_Earth = new Skill("Riddle of Earth","https://img.finalfantasyxiv.com/lds/d/84e3e679f5393f9a83e3b8204aad5192ecc483d1.png");
     Riddle_of_Earth.addBuff(BRiddle_of_Earth);
@@ -267,7 +267,7 @@ export function initialise() {
     MNK.addSkill(Riddle_of_Earth);
 
     //Setup RPR
-    let RPR = new Job("RPR", "https://img.finalfantasyxiv.com/lds/promo/h/p/y8GHAXX4qhY7D-yqnCqtEPkjoo.png",76131,126,1545,3093,2.49);
+    let RPR = new Job("RPR", "https://img.finalfantasyxiv.com/lds/promo/h/p/y8GHAXX4qhY7D-yqnCqtEPkjoo.png",86628,132,1764,3379,2.49);
     const BCrest_of_Time_Borrowed = new Buff(0,0,10,10,0,5,30,1,false,false,"Crest of Time Borrowed","https://xivapi.com/i/012000/012934.png",false,"Mitig");
     let Arcane_Crest = new Skill("Arcane Crest","https://img.finalfantasyxiv.com/lds/d/9977fdbbf70443f9f31f4868cba97138fbec5460.png");
     Arcane_Crest.addBuff(BCrest_of_Time_Borrowed);
@@ -277,21 +277,21 @@ export function initialise() {
 
 
     //Setup DNC
-    let DNC = new Job("DNC", "https://img.finalfantasyxiv.com/lds/promo/h/0/ZzzbixB1HHW9FaxNXdfY7Y7lvw.png",75345,126,1721,3096,2.47);
+    let DNC = new Job("DNC", "https://img.finalfantasyxiv.com/lds/promo/h/0/ZzzbixB1HHW9FaxNXdfY7Y7lvw.png",85818,132,1952,3379,2.49);
     const BShield_Samba = new Buff(0,0,10,10,0,15,90,1,true,false,"Shield Samba","https://assets.rpglogs.com/img/ff/abilities/013000-013715.png",false,"Mitig");
     let Shield_Samba = new Skill("Shield Samba","https://img.finalfantasyxiv.com/lds/d/f9692ff39ee50c5901429aaca48c066b8952732a.png");
     Shield_Samba.addBuff(BShield_Samba);
     DNC.addSkill(Shield_Samba);
 
     //Setup BRD
-    let BRD = new Job("BRD", "https://img.finalfantasyxiv.com/lds/promo/h/b/d7BM1x8OZRZU-9fTk-D7g1t2oc.png",75345,126,1721,3096,2.47);
+    let BRD = new Job("BRD", "https://img.finalfantasyxiv.com/lds/promo/h/b/d7BM1x8OZRZU-9fTk-D7g1t2oc.png",85818,132,1885,3379,2.48);
     const BTroubadour = new Buff(0,0,10,10,0,15,90,1,true,false,"Troubadour","https://xivapi.com/i/012000/012615.png",false,"Mitig");
     let Troubadour = new Skill("Troubadour","https://img.finalfantasyxiv.com/lds/d/8afc3a84c2ec0f215d378e8ed011fd260d3cdc6b.png");
     Troubadour.addBuff(BTroubadour);
     BRD.addSkill(Troubadour);
 
     //Setup MCH
-    let MCH = new Job("MCH", "https://img.finalfantasyxiv.com/lds/promo/h/2/oHLJxTt_OLDK_eQkRTBVNwwxeE.png",75345,126,1721,3093,2.47);
+    let MCH = new Job("MCH", "https://img.finalfantasyxiv.com/lds/promo/h/2/oHLJxTt_OLDK_eQkRTBVNwwxeE.png",85818,132,2114,3376,2.5);
     const BTactician  = new Buff(0,0,10,10,0,15,90,1,true,false,"Tactician","https://assets.rpglogs.com/img/ff/abilities/013000-013021.png",false,"Mitig");
     let Tactician  = new Skill("Tactician","https://img.finalfantasyxiv.com/lds/d/eb334bf6f4cfd728e234e09c1cc1521c37d9d73e.png");
     Tactician.addBuff(BTactician);
@@ -310,7 +310,7 @@ export function initialise() {
 
 
     //Setup BLM
-    let BLM = new Job("BLM", "https://img.finalfantasyxiv.com/lds/promo/h/A/7JuT00VSwaFqTfcTYUCUnGPFQE.png",68444,126,1287,3092,2.17);
+    let BLM = new Job("BLM", "https://img.finalfantasyxiv.com/lds/promo/h/A/7JuT00VSwaFqTfcTYUCUnGPFQE.png",77848,132,1655,3375,2.42);
     const BManaward = new Buff(0,30,0,0,0,20,120,1,false,false,"Manaward","https://xivapi.com/i/010000/010456.png",false,"Mitig");
     let Manaward = new Skill("Manaward","https://img.finalfantasyxiv.com/lds/d/75ed92265dc2dcc6fa1e0b8f22a01258799f222d.png");
     Manaward.addBuff(BManaward);
@@ -318,7 +318,7 @@ export function initialise() {
     BLM.addSkill(Manaward);
 
     //Setup RDM
-    let RDM = new Job("RDM", "https://img.finalfantasyxiv.com/lds/promo/h/C/NRnqJxzRtbDKR1ZHzxazWBBR2Y.png",68395,126,1548,3094,2.48);
+    let RDM = new Job("RDM", "https://img.finalfantasyxiv.com/lds/promo/h/C/NRnqJxzRtbDKR1ZHzxazWBBR2Y.png",77848,132,1601,3379,2.48);
     const BMagick_Barrier = new Buff(0,0,0,10,0,10,120,1,true,false,"Magick Barrier","https://assets.rpglogs.com/img/ff/abilities/013000-013408.png",false,"Mitig");
     let Magick_Barrier = new Skill("Magick Barrier","https://img.finalfantasyxiv.com/lds/d/76814235b2963003889ec3f3fc8c4857d82d3177.png");
     Magick_Barrier.addBuff(BMagick_Barrier);
@@ -326,7 +326,7 @@ export function initialise() {
     RDM.addSkill(Magick_Barrier);
 
     //Setup SMN
-    let SMN = new Job("SMN", "https://img.finalfantasyxiv.com/lds/promo/h/b/ZwJFxv3XnfqB5N6tKbgXKnj6BU.png",68395,126,1548,3095,2.48);
+    let SMN = new Job("SMN", "https://img.finalfantasyxiv.com/lds/promo/h/b/ZwJFxv3XnfqB5N6tKbgXKnj6BU.png",77848,132,1871,3379,2.48);
     const BRadiant_Aegis = new Buff(0,20,0,0,0,30,60,2,false,false,"Radiant Aegis","https://assets.rpglogs.com/img/ff/abilities/012000-012691.png",false,"Mitig");
     let Radiant_Aegis = new Skill("Radiant Aegis","https://img.finalfantasyxiv.com/lds/d/a116b861109158ee5db8e36cf922fae8f923e7d5.png");
     Radiant_Aegis.addBuff(BRadiant_Aegis);

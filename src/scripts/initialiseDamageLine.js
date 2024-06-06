@@ -186,12 +186,62 @@ export function initialiseDamageLine(){
     
 
 
+    let LineP12sP2 = new DamageLine("P12S P2",4);
+    LineP12sP2.addDamage(new DamageNode("Ultima",11,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Palladian Grasp",23,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Palladian Grasp",27,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Gaiaochos",40,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Divine Excoriation",84,DamageType.Magic,50000));
+
+    LineP12sP2.addDamage(new DamageNode("Ultima",93,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("The Classical Concepts",108,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Aspect Effect",124,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Palladian Ray",130,DamageType.Magic,50000));
+
+    LineP12sP2.addDamage(new DamageNode("Ultima",143,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Crush Helm",152,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Crush Helm TB",158,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Caloric Theory",172,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Pyre Pulse",185,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Dynamic Atmosphere + Pyre Pulse",196,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Ekpyrosis Spreads",217,DamageType.Magic,50000));
+
+    LineP12sP2.addDamage(new DamageNode("Ultima",226,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Pangenesis",240,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Polarized Advent",254,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Polarized Advent",259,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Polarized Advent",264,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Factor In",276,DamageType.Magic,50000));
+
+    LineP12sP2.addDamage(new DamageNode("Palladian Grasp",279,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Palladian Grasp",282,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("The Classical Concepts",296,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Palladian Ray + Aspect Effect",319,DamageType.Magic,50000));
+
+    LineP12sP2.addDamage(new DamageNode("Ultima",332,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Crush Helm",342,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Crush Helm TB",348,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Caloric Theory",362,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Dynamic Atmosphere",390,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Ekpyrosis Spreads",403,DamageType.Magic,50000));
+
+    LineP12sP2.addDamage(new DamageNode("Ultima",411,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Gaiaochos",425,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Divine Excoriation",458,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Ultima Blow",476,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Ultima",480,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Ultima Blow",490,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Ultima",494,DamageType.Magic,50000));
+    LineP12sP2.addDamage(new DamageNode("Ignorabimus",523,DamageType.Magic,50000));
+
+
+
     let DamageLineList = new Map();
     DamageLineList.set(LineP8sP1Gorgon.damageLineIndex, LineP8sP1Gorgon);
     DamageLineList.set(LineP8sP1Dog.damageLineIndex, LineP8sP1Dog);
     DamageLineList.set(LineP8sP2.damageLineIndex, LineP8sP2);
     DamageLineList.set(LineP12sP1.damageLineIndex, LineP12sP1);
-
+    DamageLineList.set(LineP12sP2.damageLineIndex, LineP12sP2);
 
     return DamageLineList;
 }

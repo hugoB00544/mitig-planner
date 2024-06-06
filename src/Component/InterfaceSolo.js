@@ -750,7 +750,6 @@ function InterfaceSolo() {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [dLineIndex, setDLineIndex] = useState(partyInit.damageLine.damageLineIndex);
 
-
   damageLineList.forEach(dLine => {
     listOptionDLine.push(<option value={dLine.damageLineIndex} key={dLine.name} >{dLine.name}</option>);
   });
